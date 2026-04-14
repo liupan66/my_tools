@@ -29,8 +29,7 @@
         
         .container {
             width: 100%;
-            height: auto;
-            min-height: 100vh;
+            height: 100vh;
             background-color: white;
             box-shadow: 0 0 15px rgba(0,0,0,0.08);
             display: flex;
@@ -133,6 +132,7 @@
             display: none;
             flex: 1;
             overflow: hidden;
+            min-height: 0;
         }
         
         .tab-content.active {
@@ -145,6 +145,7 @@
             display: flex;
             flex-direction: row;
             overflow: hidden;
+            min-height: 0;
         }
         
         .left-panel {
@@ -286,6 +287,7 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            min-height: 0;
         }
         
         .fullscreen-btn {
@@ -1012,16 +1014,16 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            min-height: 0;
         }
         
         .gantt-vertical-scroll {
             flex: 1;
-            min-height: 200px;
-            overflow-y: auto;
+            min-height: 0;
+            overflow: auto;
         }
         
         .gantt-scroll-container {
-            overflow-x: auto;
             border: 1px solid #e9ecef;
             border-radius: 8px;
             background-color: #fff;
@@ -1513,19 +1515,22 @@
                 
                 <div class="right-panel">
                     <div class="gantt-container" style="flex: 1;">
-                        <!-- 甘特图滚动容器 -->
-                        <div class="gantt-scroll-container">
-                            <table class="gantt-table" id="ganttTable">
-                                <thead>
-                                    <tr id="dateHeader">
-                                        <th class="executor">任务执行人</th>
-                                        <!-- 日期会通过JavaScript动态生成 -->
-                                    </tr>
-                                </thead>
-                                <tbody id="ganttBody">
-                                    <!-- 任务行会通过JavaScript动态生成 -->
-                                </tbody>
-                            </table>
+                        <!-- 甘特图垂直滚动容器 -->
+                        <div class="gantt-vertical-scroll">
+                            <!-- 甘特图水平滚动容器 -->
+                            <div class="gantt-scroll-container">
+                                <table class="gantt-table" id="ganttTable">
+                                    <thead>
+                                        <tr id="dateHeader">
+                                            <th class="executor">任务执行人</th>
+                                            <!-- 日期会通过JavaScript动态生成 -->
+                                        </tr>
+                                    </thead>
+                                    <tbody id="ganttBody">
+                                        <!-- 任务行会通过JavaScript动态生成 -->
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1832,15 +1837,17 @@
                 ...e,
                 tasks: Array.isArray(e.tasks) ? e.tasks : []
             })) : [];
-            const executorList = ['张三', '李四', '王五'];
+            const derivedExecutorList = executors.map(e => e.executor);
+            const savedExecutorList = Array.isArray(d.executorList) ? d.executorList : [];
+            const mergedExecutorList = [...new Set([...savedExecutorList, ...derivedExecutorList])];
             return {
                 executors: executors,
                 colorConfig: d.colorConfig && typeof d.colorConfig === 'object' ? d.colorConfig : defaultColorConfig(),
                 holidays: Array.isArray(d.holidays) && d.holidays.length ? d.holidays : getDefaultHolidays(),
                 saturdayWorkday: !!d.saturdayWorkday,
                 sundayWorkday: !!d.sundayWorkday,
-                projectList: Array.isArray(d.projectList) ? d.projectList : ['项目A', '项目B'],
-                executorList: executorList,
+                projectList: Array.isArray(d.projectList) && d.projectList.length ? d.projectList : ['项目A', '项目B'],
+                executorList: mergedExecutorList.length ? mergedExecutorList : derivedExecutorList,
                 projectColorConfig: d.projectColorConfig && typeof d.projectColorConfig === 'object' ? d.projectColorConfig : {
                     '项目A': '#3498db',
                     '项目B': '#2ecc71'
@@ -1854,30 +1861,28 @@
         // 从服务器加载数据
         async function loadData() {
             try {
-                // 注释掉登录检查，直接加载数据
-                // const token = localStorage.getItem('authToken');
+                const token = localStorage.getItem('authToken');
                 const headers = { 'Content-Type': 'application/json' };
-                // if (token) {
-                //     headers['Authorization'] = `Bearer ${token}`;
-                // }
+                if (token) {
+                    headers['Authorization'] = `Bearer ${token}`;
+                }
                 console.log('开始从服务器获取数据');
                 const response = await fetch('/api/gantt-data', { headers });
                 console.log('服务器响应状态:', response.status);
                 if (response.ok) {
                     const data = await response.json();
-                    console.log('服务器返回的数据:', data);
                     if (data && data.data) {
                         console.log('从服务器加载数据成功');
                         const state = buildStateFromData(data.data);
-                        console.log('构建的状态:', state);
                         return state;
                     }
-                } 
-                // else if (response.status === 401) {
-                //     console.log('未认证，跳转到登录');
-                //     window.location.href = '/login.html';
-                //     return null;
-                // }
+                } else if (response.status === 401) {
+                    console.log('认证失效，跳转到登录');
+                    localStorage.removeItem('authToken');
+                    localStorage.removeItem('user');
+                    window.location.href = '/login.html';
+                    return null;
+                }
             } catch (error) {
                 console.error('从服务器加载数据失败:', error);
             }
@@ -2026,7 +2031,6 @@
         async function saveData() {
             console.log('saveData函数被调用');
             
-            // 检查权限
             if (!hasEditPermission()) {
                 console.warn('无权限保存数据');
                 return;
@@ -2036,6 +2040,9 @@
                 const sd = startDate instanceof Date ? startDate : new Date(startDate);
                 const ed = endDate instanceof Date ? endDate : new Date(endDate);
                 
+                const derivedExecutorList = executors.map(e => e.executor);
+                const mergedExecutorList = [...new Set([...executorList, ...derivedExecutorList])];
+                
                 const state = {
                     v: GANTT_STATE_VERSION,
                     executors: executors,
@@ -2044,17 +2051,15 @@
                     saturdayWorkday: saturdayWorkday,
                     sundayWorkday: sundayWorkday,
                     projectList: projectList,
-                    executorList: executorList,
+                    executorList: mergedExecutorList,
                     projectColorConfig: projectColorConfig,
                     startDate: formatDateLocal(sd),
                     endDate: formatDateLocal(ed),
                     hideProjectBarWhenSingleProject: hideProjectBarWhenSingleProject
                 };
                 
-                // 通过Socket.io发送数据
                 socket.emit('update', state);
                 
-                // 同时保存到本地存储作为备份
                 localStorage.setItem(GANTT_STATE_KEY, JSON.stringify(state));
                 console.log('保存成功');
             } catch (e) {
@@ -2229,6 +2234,8 @@
             endDate: ''
         };
         
+        let currentUser = null;
+        
         // 任务ID生成器（使用递增ID避免快速添加时重复）
         let taskIdCounter = Date.now();
         function generateTaskId() {
@@ -2238,21 +2245,20 @@
         // 日期范围 - 使用加载的数据或默认值
         const visibleDays = 180; // 可见天数
         
-        // 添加Socket.io客户端
-        // 注释掉登录检查，直接连接Socket.io
-        // const token = localStorage.getItem('authToken');
+        const socketAuthToken = localStorage.getItem('authToken');
         const socket = io({
             auth: {
-                // token: token
+                token: socketAuthToken
             }
         });
         
         socket.on('error', (error) => {
             console.error('Socket错误:', error);
-            // if (error.message === 'Authentication required' || error.message === 'Invalid token') {
-            //     localStorage.removeItem('authToken');
-            //     window.location.href = '/login.html';
-            // }
+            if (error && (error.message === 'Authentication required' || error.message === 'Invalid token')) {
+                localStorage.removeItem('authToken');
+                localStorage.removeItem('user');
+                window.location.href = '/login.html';
+            }
         });
         
         // 接收服务器数据更新
@@ -2403,6 +2409,7 @@
 
         // 初始化应用
         async function initApp() {
+            // 首先设置默认数据
             colorConfig = defaultColorConfig();
             holidays = getDefaultHolidays();
             projectList = ['项目A', '项目B'];
@@ -2459,6 +2466,29 @@
             ];
             startDate = new Date('2026-01-01');
             endDate = new Date('2026-06-30');
+
+            // 加载保存的数据（从服务器或本地存储）
+            console.log('开始加载数据');
+            const loadedData = await loadData();
+            if (loadedData) {
+                console.log('加载到数据，更新应用状态');
+                // 更新应用状态
+                colorConfig = loadedData.colorConfig || colorConfig;
+                holidays = loadedData.holidays || holidays;
+                projectList = loadedData.projectList || projectList;
+                executorList = loadedData.executorList || executorList;
+                projectColorConfig = loadedData.projectColorConfig || projectColorConfig;
+                executors = loadedData.executors || executors;
+                startDate = loadedData.startDate || startDate;
+                endDate = loadedData.endDate || endDate;
+                hideProjectBarWhenSingleProject = loadedData.hideProjectBarWhenSingleProject !== false;
+            }
+            
+            // 确保 executorList 中不包含"添加任务"
+            executorList = executorList.filter(item => item !== '添加任务');
+            
+            // 确保 executors 中不包含"添加任务"作为执行人
+            executors = executors.filter(item => item.executor !== '添加任务');
 
             init();
             generateTaskTypeLegend();
@@ -2522,7 +2552,7 @@
         
         // 横向滚动：使「今天」所在日期列出现在执行人冻结列右侧的第一个可见位置（打开时的默认视图）
         function scrollGanttToToday() {
-            const container = document.querySelector('.gantt-scroll-container');
+            const container = document.querySelector('.gantt-vertical-scroll');
             const dateHeader = document.getElementById('dateHeader');
             if (!container || !dateHeader) return;
             
@@ -5521,112 +5551,141 @@
             
             const DRAG_THRESHOLD_PX = 6;
             const handleSelector = '.executor span';
-            const itemSelector = 'tr';
+            
+            let dragState = null;
             
             ganttBody.addEventListener('mousedown', function(e) {
-                // 检查用户是否有编辑权限
                 if (!hasEditPermission()) return;
-                
                 if (!e.target.closest(handleSelector)) return;
                 
-                const item = e.target.closest(itemSelector);
+                const item = e.target.closest('tr');
                 if (!item || !ganttBody.contains(item)) return;
+                if (!item.dataset.executor) {
+                    e.preventDefault();
+                    return;
+                }
                 
                 e.preventDefault();
                 
-                let draggedElement = item;
-                const startX = e.clientX;
-                const startY = e.clientY;
-                const startTop = item.offsetTop;
-                let didDrag = false;
-                let lastClientY = e.clientY;
+                dragState = {
+                    row: item,
+                    startX: e.clientX,
+                    startY: e.clientY,
+                    didDrag: false,
+                    placeholder: null,
+                    lastInsertBefore: null
+                };
+            });
+            
+            document.addEventListener('mousemove', function(e) {
+                if (!dragState) return;
                 
-                function onMouseMove(e) {
-                    if (!draggedElement) return;
-                    lastClientY = e.clientY;
-                    const deltaY = e.clientY - startY;
-                    const deltaX = e.clientX - startX;
-                    if (!didDrag && (Math.abs(deltaY) >= DRAG_THRESHOLD_PX || Math.abs(deltaX) >= DRAG_THRESHOLD_PX)) {
-                        didDrag = true;
-                    }
-                    if (!didDrag) return;
+                const deltaY = e.clientY - dragState.startY;
+                const deltaX = e.clientX - dragState.startX;
+                
+                if (!dragState.didDrag) {
+                    if (Math.abs(deltaY) < DRAG_THRESHOLD_PX && Math.abs(deltaX) < DRAG_THRESHOLD_PX) return;
+                    dragState.didDrag = true;
                     
-                    let newTop = startTop + deltaY;
-                    const maxTop = Math.max(0, ganttBody.offsetHeight - draggedElement.offsetHeight);
-                    newTop = Math.max(0, Math.min(newTop, maxTop));
+                    dragState.row.style.opacity = '0.4';
+                    dragState.row.style.backgroundColor = '#d4edda';
                     
-                    draggedElement.style.position = 'absolute';
-                    draggedElement.style.top = newTop + 'px';
-                    draggedElement.style.left = '0';
-                    draggedElement.style.width = '100%';
-                    draggedElement.style.zIndex = '1000';
-                    draggedElement.style.opacity = '0.8';
+                    dragState.placeholder = document.createElement('tr');
+                    dragState.placeholder.style.height = dragState.row.offsetHeight + 'px';
+                    dragState.placeholder.style.opacity = '0';
+                    dragState.placeholder.innerHTML = '<td colspan="99"></td>';
                 }
                 
-                function onMouseUp(e) {
-                    if (!draggedElement) return;
-                    document.removeEventListener('mousemove', onMouseMove);
-                    document.removeEventListener('mouseup', onMouseUp);
+                if (!dragState.didDrag) return;
+                
+                const rows = Array.from(ganttBody.children).filter(r => r.dataset.executor && r !== dragState.row);
+                let insertBefore = null;
+                
+                for (const row of rows) {
+                    const rect = row.getBoundingClientRect();
+                    const midY = rect.top + rect.height / 2;
+                    if (e.clientY < midY) {
+                        insertBefore = row;
+                        break;
+                    }
+                }
+                
+                if (dragState.lastInsertBefore !== insertBefore) {
+                    dragState.lastInsertBefore = insertBefore;
                     
-                    const el = draggedElement;
-                    draggedElement = null;
-                    
-                    if (!didDrag) return;
-                    
-                    const dropY = (e && typeof e.clientY === 'number') ? e.clientY : lastClientY;
-                    
-                    el.style.position = '';
-                    el.style.top = '';
-                    el.style.left = '';
-                    el.style.width = '';
-                    el.style.zIndex = '';
-                    el.style.opacity = '';
-                    
-                    ganttBody.removeChild(el);
-                    
-                    let insertIndex = ganttBody.children.length;
-                    for (let i = 0; i < ganttBody.children.length; i++) {
-                        const rect = ganttBody.children[i].getBoundingClientRect();
-                        const midY = rect.top + rect.height / 2;
-                        if (dropY < midY) {
-                            insertIndex = i;
-                            break;
-                        }
+                    if (dragState.placeholder.parentNode) {
+                        dragState.placeholder.remove();
                     }
                     
-                    if (insertIndex >= ganttBody.children.length) {
-                        ganttBody.appendChild(el);
+                    if (insertBefore) {
+                        ganttBody.insertBefore(dragState.placeholder, insertBefore);
                     } else {
-                        ganttBody.insertBefore(el, ganttBody.children[insertIndex]);
+                        ganttBody.appendChild(dragState.placeholder);
                     }
                     
-                    // 更新executors数组的顺序
-                    const newExecutors = [];
-                    Array.from(ganttBody.children).forEach(row => {
-                        const executorName = row.dataset.executor;
-                        if (executorName) {
-                            const existingExecutor = executors.find(e => e.executor === executorName);
-                            if (existingExecutor) {
-                                newExecutors.push(existingExecutor);
-                            }
-                        }
-                    });
+                    if (dragState.row.parentNode) {
+                        dragState.row.remove();
+                    }
                     
-                    if (newExecutors.length > 0) {
+                    if (insertBefore) {
+                        ganttBody.insertBefore(dragState.row, insertBefore);
+                    } else {
+                        ganttBody.appendChild(dragState.row);
+                    }
+                }
+            });
+            
+            document.addEventListener('mouseup', function(e) {
+                if (!dragState) return;
+                
+                const state = dragState;
+                dragState = null;
+                
+                if (state.placeholder && state.placeholder.parentNode) {
+                    state.placeholder.remove();
+                }
+                
+                state.row.style.opacity = '';
+                state.row.style.backgroundColor = '';
+                
+                if (!state.didDrag) return;
+                
+                const newExecutors = [];
+                Array.from(ganttBody.children).forEach(row => {
+                    const executorName = row.dataset.executor;
+                    if (executorName) {
+                        const existingExecutor = executors.find(ex => ex.executor === executorName);
+                        if (existingExecutor) {
+                            newExecutors.push(existingExecutor);
+                        }
+                    }
+                });
+                
+                if (newExecutors.length > 0) {
+                    const orderChanged = newExecutors.some((ex, i) => ex.executor !== executors[i]?.executor);
+                    if (orderChanged) {
                         executors = newExecutors;
+                        // 更新 executorList 以保持顺序一致
+                        executorList = newExecutors.map(ex => ex.executor);
                         saveData();
                         updateExecutorSelects();
-                        // 重新生成甘特图以确保所有元素都正确渲染
                         generateGantt();
                     }
                 }
-                
-                document.addEventListener('mousemove', onMouseMove);
-                document.addEventListener('mouseup', onMouseUp);
             });
         }
         
         document.addEventListener('DOMContentLoaded', function() {
+            const token = localStorage.getItem('authToken');
+            const user = localStorage.getItem('user');
+            
+            if (!token || !user) {
+                window.location.href = '/login.html';
+                return;
+            }
+            
+            currentUser = JSON.parse(user);
+            
             bindVerticalListDragReorder('colorItems', {
                 onReorder: function() {
                     updateColorConfigOrder();
@@ -7084,6 +7143,11 @@
             // 确保目标执行人为空时不继续执行
             if (!targetExecutor) return;
             
+            // 防止将任务拖到"添加任务"行
+            if (targetExecutor === '添加任务') {
+                return;
+            }
+            
             // 查找对应的任务
             let foundTask = null;
             let sourceExecutor = null;
@@ -7101,7 +7165,6 @@
             }
             
             if (foundTask && targetExecutor) {
-                // 计算新的开始和结束日期
                 const originalStart = new Date(data.originalStart);
                 const originalEnd = new Date(data.originalEnd);
                 
@@ -7111,20 +7174,8 @@
                 const newEnd = new Date(originalEnd);
                 newEnd.setDate(newEnd.getDate() + deltaDays);
                 
-                // 确保日期有效
                 if (newStart <= newEnd) {
-                    // 更新任务的开始和结束日期
-                    if (data.phaseIndex >= 0 && foundTask.phases) {
-                        foundTask.phases[data.phaseIndex].startDate = formatDateLocal(newStart);
-                        foundTask.phases[data.phaseIndex].endDate = formatDateLocal(newEnd);
-                    } else if (foundTask.type) {
-                        foundTask.startDate = formatDateLocal(newStart);
-                        foundTask.endDate = formatDateLocal(newEnd);
-                    }
-                    
-                    // 如果目标执行人与源执行人不同，移动任务
                     if (targetExecutor !== data.executorName) {
-                        // 从源执行人中移除任务
                         if (sourceExecutor) {
                             const taskIndex = sourceExecutor.tasks.findIndex(t => t.id == data.taskId);
                             if (taskIndex !== -1) {
@@ -7132,7 +7183,21 @@
                             }
                         }
                         
-                        // 找到或创建目标执行人
+                        if (foundTask.phases && foundTask.phases.length > 0) {
+                            foundTask.phases.forEach(p => {
+                                const pStart = new Date(p.startDate);
+                                const pEnd = new Date(p.endDate);
+                                pStart.setDate(pStart.getDate() + deltaDays);
+                                pEnd.setDate(pEnd.getDate() + deltaDays);
+                                p.startDate = formatDateLocal(pStart);
+                                p.endDate = formatDateLocal(pEnd);
+                            });
+                            foundTask.phases.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+                        } else if (foundTask.type) {
+                            foundTask.startDate = formatDateLocal(newStart);
+                            foundTask.endDate = formatDateLocal(newEnd);
+                        }
+                        
                         let executor = executors.find(e => e.executor === targetExecutor);
                         if (!executor) {
                             executor = {
@@ -7141,26 +7206,24 @@
                             };
                             executors.push(executor);
                             
-                            // 更新executorList数组，保持执行的顺序不变
                             if (!executorList.includes(targetExecutor)) {
-                                // 找到目标执行人在原执行列表中的位置
-                                const targetIndex = executorList.findIndex(e => e === targetExecutor);
-                                if (targetIndex === -1) {
-                                    // 如果目标执行人不在executorList中，添加到列表中，但保持顺序不变
-                                    // 这里我们不改变executorList的顺序，只是确保目标执行人在列表中
-                                    // 这样，当重新生成甘特图时，执行的顺序会保持不变
-                                    executorList.push(targetExecutor);
-                                }
-                                updateExecutorSelects();
-                                updateExecutorFilter();
+                                executorList.push(targetExecutor);
                             }
+                            updateExecutorSelects();
+                            updateExecutorFilter();
                         }
                         
-                        // 添加任务到目标执行人
                         executor.tasks.push(foundTask);
+                    } else {
+                        if (data.phaseIndex >= 0 && foundTask.phases) {
+                            foundTask.phases[data.phaseIndex].startDate = formatDateLocal(newStart);
+                            foundTask.phases[data.phaseIndex].endDate = formatDateLocal(newEnd);
+                        } else if (foundTask.type) {
+                            foundTask.startDate = formatDateLocal(newStart);
+                            foundTask.endDate = formatDateLocal(newEnd);
+                        }
                     }
                     
-                    // 重新生成甘特图（会自动更新项目时间条）
                     generateGantt();
                     saveData();
                 }

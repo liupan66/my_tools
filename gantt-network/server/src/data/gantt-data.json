@@ -2,221 +2,1447 @@
   "v": 1,
   "executors": [
     {
-      "executor": "张三",
-      "tasks": []
-    },
-    {
-      "executor": "李四",
+      "executor": "董阿龙",
       "tasks": [
         {
-          "id": 3,
-          "name": "任务3",
-          "project": "项目A",
+          "id": 1775107711497,
+          "name": "6、9、10兼容",
+          "executor": "董阿龙",
           "phases": [
             {
-              "type": "执行",
-              "startDate": "2026-03-20",
+              "type": "开发",
+              "startDate": "2026-04-07",
+              "endDate": "2026-04-10"
+            },
+            {
+              "type": "测试",
+              "startDate": "2026-04-27",
+              "endDate": "2026-04-28"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": 1775195453385,
+          "name": "一体机联调",
+          "project": "SBH2.0",
+          "phases": [
+            {
+              "type": "调试",
+              "startDate": "2026-04-03",
+              "endDate": "2026-04-03"
+            }
+          ]
+        },
+        {
+          "id": 1775549402674,
+          "name": "一轮提测",
+          "project": "SBL二供电芯导入",
+          "phases": [
+            {
+              "type": "提测",
+              "startDate": "2026-05-23",
+              "endDate": "2026-05-23"
+            }
+          ]
+        },
+        {
+          "id": 1775552013003,
+          "name": "铜排温度失效检测",
+          "project": "SBL二供电芯导入",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-05-18",
+              "endDate": "2026-05-20"
+            },
+            {
+              "id": 1775552013004,
+              "type": "测试",
+              "startDate": "2026-05-21",
+              "endDate": "2026-05-21"
+            }
+          ]
+        },
+        {
+          "id": 1775101461295,
+          "name": "一轮提测",
+          "executor": "董阿龙",
+          "phases": [
+            {
+              "type": "提测",
+              "startDate": "2026-05-14",
+              "endDate": "2026-05-16"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": "task_1775631279177",
+          "name": "必测项",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-05-11",
+              "endDate": "2026-05-13"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": "task_1775715943510",
+          "name": "配置参数",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-05-08",
+              "endDate": "2026-05-09"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": "task_1775715980038",
+          "name": "日志记录导出",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-04-24",
+              "endDate": "2026-04-25"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": "task_1775713630492",
+          "name": "DCDC通信",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-04-22",
+              "endDate": "2026-04-22"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": "task_1775715770365",
+          "name": "PCS-CAN通信",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-04-20",
+              "endDate": "2026-04-21"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": 1775195494876,
+          "name": "BMU信息管理",
+          "project": "SBH2.0",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-29",
+              "endDate": "2026-04-30"
+            },
+            {
+              "type": "测试",
+              "startDate": "2026-05-06",
+              "endDate": "2026-05-07"
+            }
+          ]
+        },
+        {
+          "id": "task_1776049427735",
+          "name": "必测项",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-05-22",
+              "endDate": "2026-05-22"
+            }
+          ],
+          "project": "SBL二供电芯导入"
+        },
+        {
+          "id": "task_1775629886011",
+          "name": "加热",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-05-25",
+              "endDate": "2026-05-28"
+            },
+            {
+              "id": 1775629591553,
+              "type": "测试",
+              "startDate": "2026-05-29",
+              "endDate": "2026-05-30"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": "task_1776063520452",
+          "name": "提测测试部",
+          "phases": [
+            {
+              "type": "提测",
+              "startDate": "2026-04-23",
+              "endDate": "2026-04-23"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": "task_1775638020502",
+          "name": "一体机启停机",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-04-15",
               "endDate": "2026-04-16"
             },
             {
-              "type": "检查",
-              "startDate": "2026-04-19",
-              "endDate": "2026-04-19"
+              "id": 1775712223087,
+              "type": "开发",
+              "startDate": "2026-04-13",
+              "endDate": "2026-04-14"
+            }
+          ],
+          "project": "SBH2.0"
+        }
+      ]
+    },
+    {
+      "executor": "胡勇兵",
+      "tasks": [
+        {
+          "id": "task_1775625666186",
+          "name": "休假",
+          "phases": [
+            {
+              "type": "休假",
+              "startDate": "2026-04-29",
+              "endDate": "2026-05-16"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": 1775553434502,
+          "name": "工作模式切换",
+          "project": "SBH2.0",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-17",
+              "endDate": "2026-04-17"
+            },
+            {
+              "id": 1775561545251,
+              "type": "测试",
+              "startDate": "2026-04-18",
+              "endDate": "2026-04-18"
+            }
+          ]
+        },
+        {
+          "id": "task_1776160052761",
+          "name": "一体机启停机",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-13",
+              "endDate": "2026-04-14"
+            },
+            {
+              "id": 1776157752476,
+              "type": "测试",
+              "startDate": "2026-04-15",
+              "endDate": "2026-04-16"
+            }
+          ],
+          "project": "SBH2.0"
+        }
+      ]
+    },
+    {
+      "executor": "翁同童",
+      "tasks": [
+        {
+          "id": 1775220635245,
+          "name": "自动编址",
+          "project": "SBH2.0",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-07",
+              "endDate": "2026-04-11"
+            },
+            {
+              "type": "测试",
+              "startDate": "2026-04-20",
+              "endDate": "2026-04-23"
+            },
+            {
+              "id": 1775712223096,
+              "type": "开发",
+              "startDate": "2026-04-14",
+              "endDate": "2026-04-14"
+            }
+          ]
+        },
+        {
+          "id": 1775116553633,
+          "name": "紧急充电",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-05-07",
+              "endDate": "2026-05-07"
+            },
+            {
+              "id": 1775561908356,
+              "type": "开发",
+              "startDate": "2026-04-29",
+              "endDate": "2026-04-30"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": 1775116577977,
+          "name": "低压保护",
+          "phases": [],
+          "project": "SBH2.0"
+        },
+        {
+          "id": 1775549402670,
+          "name": "二供电芯",
+          "project": "SBL二供电芯导入",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-05-18",
+              "endDate": "2026-05-20"
+            },
+            {
+              "id": 1775549402673,
+              "type": "测试",
+              "startDate": "2026-05-21",
+              "endDate": "2026-05-22"
+            }
+          ]
+        },
+        {
+          "id": "task_1775715017285",
+          "name": "堆信息汇总",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-05-09",
+              "endDate": "2026-05-10"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": "task_1775715037869",
+          "name": "主机信息汇总",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-04-27",
+              "endDate": "2026-04-28"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": "task_1775715181735",
+          "name": "RTC",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-05-08",
+              "endDate": "2026-05-08"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": "task_1775715273688",
+          "name": "CMU-上位机通信",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-05-11",
+              "endDate": "2026-05-12"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": "task_1775897965304",
+          "name": "主从机信息汇总",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-04-13",
+              "endDate": "2026-04-13"
+            }
+          ],
+          "project": "STCF_R"
+        },
+        {
+          "id": "task_1775714898735",
+          "name": "DCDC故障录波",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-24",
+              "endDate": "2026-04-24"
+            },
+            {
+              "id": 1775712223097,
+              "type": "测试",
+              "startDate": "2026-04-25",
+              "endDate": "2026-04-25"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": "task_1775715846485",
+          "name": "后门测点",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-05-13",
+              "endDate": "2026-05-14"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": 1775552013007,
+          "name": "Elog",
+          "project": "SBH2.0",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-05-25",
+              "endDate": "2026-05-28"
+            },
+            {
+              "id": 1775552013008,
+              "type": "测试",
+              "startDate": "2026-05-29",
+              "endDate": "2026-05-30"
+            }
+          ]
+        },
+        {
+          "id": "task_1775629763998",
+          "name": "低功耗",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-06-01",
+              "endDate": "2026-06-04"
+            },
+            {
+              "id": 1775629591552,
+              "type": "测试",
+              "startDate": "2026-06-05",
+              "endDate": "2026-06-06"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": "task_1776160477702",
+          "name": "充放电稳定性测试",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-04-15",
+              "endDate": "2026-04-18"
+            }
+          ],
+          "project": "SBH2.0"
+        }
+      ]
+    },
+    {
+      "executor": "胡启龙",
+      "tasks": [
+        {
+          "id": 1775111840317,
+          "name": "故障诊断",
+          "executor": "胡启龙",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-04-20",
+              "endDate": "2026-04-22"
+            },
+            {
+              "id": 1776045326193,
+              "type": "开发",
+              "startDate": "2026-04-16",
+              "endDate": "2026-04-18"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": 1775116570561,
+          "name": "低压保护",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-23",
+              "endDate": "2026-04-24"
+            },
+            {
+              "id": 1775712223092,
+              "type": "测试",
+              "startDate": "2026-04-25",
+              "endDate": "2026-04-25"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": "task_1775714099159",
+          "name": "CMU-开关盒通信",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-05-06",
+              "endDate": "2026-05-07"
+            },
+            {
+              "id": 1776045326194,
+              "type": "开发",
+              "startDate": "2026-04-30",
+              "endDate": "2026-04-30"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": "task_1775895318831",
+          "name": "故障诊断开发、测试",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-13",
+              "endDate": "2026-04-14"
+            },
+            {
+              "id": 1775890929002,
+              "type": "测试",
+              "startDate": "2026-04-15",
+              "endDate": "2026-04-15"
+            }
+          ],
+          "project": "PS3.0"
+        },
+        {
+          "id": 1775111895469,
+          "name": "灯板",
+          "executor": "胡启龙",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-27",
+              "endDate": "2026-04-28"
+            },
+            {
+              "id": 1776045326192,
+              "type": "测试",
+              "startDate": "2026-04-29",
+              "endDate": "2026-04-29"
+            }
+          ],
+          "project": "SBH2.0"
+        }
+      ]
+    },
+    {
+      "executor": "王浩宇",
+      "tasks": [
+        {
+          "id": 1775108534452,
+          "name": "在线升级",
+          "executor": "王浩宇",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-20",
+              "endDate": "2026-04-25"
+            },
+            {
+              "type": "测试",
+              "startDate": "2026-04-27",
+              "endDate": "2026-04-30"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": 1775116366281,
+          "name": "多机升级",
+          "phases": [
+            {
+              "id": 1775549402671,
+              "type": "测试",
+              "startDate": "2026-04-16",
+              "endDate": "2026-04-18"
+            },
+            {
+              "id": 1775743258571,
+              "type": "开发",
+              "startDate": "2026-04-13",
+              "endDate": "2026-04-15"
+            }
+          ],
+          "project": "STCF_R"
+        }
+      ]
+    },
+    {
+      "executor": "柳章启",
+      "tasks": [
+        {
+          "id": 1775111402410,
+          "name": "SOP",
+          "executor": "柳章启",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-04-02",
+              "endDate": "2026-04-02"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": 1775111439194,
+          "name": "SOC",
+          "executor": "柳章启",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-04-03",
+              "endDate": "2026-04-03"
+            },
+            {
+              "type": "测试",
+              "startDate": "2026-04-07",
+              "endDate": "2026-04-11"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": 1775116990636,
+          "name": "SOH",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-04-13",
+              "endDate": "2026-04-14"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": "task_1775894197682",
+          "name": "全时均衡",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-04-15",
+              "endDate": "2026-04-16"
+            }
+          ],
+          "project": "其他"
+        },
+        {
+          "id": "task_1775894361468",
+          "name": "SOX测试",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-04-17",
+              "endDate": "2026-04-18"
+            }
+          ],
+          "project": "PS3.0"
+        },
+        {
+          "id": "task_1775717228619",
+          "name": "DCDC输出总压管理",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-20",
+              "endDate": "2026-04-20"
+            },
+            {
+              "id": 1775712223099,
+              "type": "测试",
+              "startDate": "2026-04-21",
+              "endDate": "2026-04-21"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": "task_1775898064898",
+          "name": "SOC联动校准",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-22",
+              "endDate": "2026-04-24"
+            },
+            {
+              "id": 1775890929014,
+              "type": "测试",
+              "startDate": "2026-04-25",
+              "endDate": "2026-04-25"
+            }
+          ],
+          "project": "STCF_R"
+        },
+        {
+          "id": 1775109095132,
+          "name": "灯板",
+          "executor": "胡启龙",
+          "phases": [],
+          "project": "SBH2.0"
+        },
+        {
+          "id": 1775552013005,
+          "name": "一体机、分体机兼容",
+          "project": "SBH2.0",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-09",
+              "endDate": "2026-04-11"
+            },
+            {
+              "id": 1775552013006,
+              "type": "测试",
+              "startDate": "2026-05-03",
+              "endDate": "2026-05-04"
+            },
+            {
+              "id": 1775712223090,
+              "type": "开发",
+              "startDate": "2026-04-29",
+              "endDate": "2026-05-02"
             }
           ]
         }
       ]
     },
     {
-      "executor": "王五",
-      "tasks": []
-    },
-    {
-      "executor": "添加任务",
+      "executor": "肖洋",
       "tasks": [
         {
-          "id": 1,
-          "name": "任务1",
-          "project": "项目A",
+          "id": 1775712223091,
+          "name": "均衡",
+          "project": "SBH2.0",
           "phases": [
             {
-              "type": "计划",
-              "startDate": "2026-04-01",
-              "endDate": "2026-04-05"
-            },
-            {
-              "type": "执行",
-              "startDate": "2026-04-06",
-              "endDate": "2026-04-10"
-            },
-            {
-              "type": "检查",
-              "startDate": "2026-04-13",
-              "endDate": "2026-04-23"
+              "type": "测试",
+              "startDate": "2026-04-27",
+              "endDate": "2026-04-28"
             }
           ]
         },
         {
-          "id": 2,
-          "name": "任务2",
-          "project": "项目B",
+          "id": "task_1775895117017",
+          "name": "消缺",
           "phases": [
             {
-              "type": "计划",
-              "startDate": "2026-04-03",
-              "endDate": "2026-04-07"
-            },
+              "type": "测试",
+              "startDate": "2026-04-20",
+              "endDate": "2026-04-25"
+            }
+          ],
+          "project": "PT3.0"
+        },
+        {
+          "id": "task_1775895233261",
+          "name": "均衡、异常电芯",
+          "phases": [
             {
-              "type": "执行",
-              "startDate": "2026-04-08",
+              "type": "开发",
+              "startDate": "2026-04-13",
+              "endDate": "2026-04-18"
+            }
+          ],
+          "project": "PS3.0"
+        }
+      ]
+    },
+    {
+      "executor": "杭兵",
+      "tasks": [
+        {
+          "id": 1775890929000,
+          "name": "AFE",
+          "project": "PS3.0",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-13",
               "endDate": "2026-04-15"
             },
             {
-              "type": "收尾",
-              "startDate": "2026-04-15",
+              "id": 1775890929001,
+              "type": "测试",
+              "startDate": "2026-04-16",
+              "endDate": "2026-04-18"
+            }
+          ]
+        },
+        {
+          "id": 1775111098580,
+          "name": "AFE",
+          "executor": "胡勇兵",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-20",
+              "endDate": "2026-04-22"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": 1775195411288,
+          "name": "AFE",
+          "project": "SBH2.0",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-04-23",
               "endDate": "2026-04-25"
             }
           ]
         }
       ]
+    },
+    {
+      "executor": "孙平川",
+      "tasks": [
+        {
+          "id": 1775637721530,
+          "name": "质量专项",
+          "project": "STCF_R",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-04-08",
+              "endDate": "2026-04-24"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "executor": "孟浩祥",
+      "tasks": [
+        {
+          "id": 1775556072342,
+          "name": "工装程序",
+          "project": "SBH2.0",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-08",
+              "endDate": "2026-04-11"
+            },
+            {
+              "id": 1775611032908,
+              "type": "测试",
+              "startDate": "2026-04-15",
+              "endDate": "2026-04-18"
+            },
+            {
+              "id": 1775712223095,
+              "type": "开发",
+              "startDate": "2026-04-13",
+              "endDate": "2026-04-14"
+            }
+          ]
+        },
+        {
+          "id": "task_1775796397407",
+          "name": "1",
+          "phases": [],
+          "project": "SBH2.0"
+        }
+      ]
+    },
+    {
+      "executor": "廖凯文",
+      "tasks": [
+        {
+          "id": 1775629591554,
+          "name": "动态投切",
+          "project": "STCF_R",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-08",
+              "endDate": "2026-04-11"
+            },
+            {
+              "id": 1775629591555,
+              "type": "测试",
+              "startDate": "2026-04-15",
+              "endDate": "2026-04-18"
+            },
+            {
+              "id": 1775890929007,
+              "type": "开发",
+              "startDate": "2026-04-13",
+              "endDate": "2026-04-14"
+            }
+          ]
+        },
+        {
+          "id": "task_1775897304281",
+          "name": "加热",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-20",
+              "endDate": "2026-04-25"
+            },
+            {
+              "id": 1775890929008,
+              "type": "测试",
+              "startDate": "2026-04-27",
+              "endDate": "2026-04-30"
+            }
+          ],
+          "project": "STCF_R"
+        },
+        {
+          "id": "task_1775897379581",
+          "name": "堆自动编址异常处理机制",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-05-07",
+              "endDate": "2026-05-10"
+            },
+            {
+              "id": 1775890929009,
+              "type": "测试",
+              "startDate": "2026-05-12",
+              "endDate": "2026-05-14"
+            }
+          ],
+          "project": "STCF_R"
+        }
+      ]
+    },
+    {
+      "executor": "朱元木",
+      "tasks": [
+        {
+          "id": 1775109047747,
+          "name": "ID竞争",
+          "executor": "朱元木",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-02",
+              "endDate": "2026-04-02"
+            },
+            {
+              "type": "测试",
+              "startDate": "2026-04-03",
+              "endDate": "2026-04-03"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": "task_1775631363744",
+          "name": "ID竞争",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-04-06",
+              "endDate": "2026-04-09"
+            },
+            {
+              "id": 1775890929004,
+              "type": "测试",
+              "startDate": "2026-04-13",
+              "endDate": "2026-04-13"
+            }
+          ],
+          "project": "STCF_R"
+        },
+        {
+          "id": "task_1775631405441",
+          "name": "风扇策略优化",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-10",
+              "endDate": "2026-04-11"
+            },
+            {
+              "id": 1775890929005,
+              "type": "测试",
+              "startDate": "2026-04-20",
+              "endDate": "2026-04-22"
+            }
+          ],
+          "project": "STCF_R"
+        },
+        {
+          "id": 1775186730885,
+          "name": "一轮提测",
+          "project": "STCF_R",
+          "phases": [
+            {
+              "type": "提测",
+              "startDate": "2026-04-25",
+              "endDate": "2026-04-25"
+            }
+          ]
+        },
+        {
+          "id": "task_1775896838490",
+          "name": "必测项",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-04-23",
+              "endDate": "2026-04-24"
+            }
+          ],
+          "project": "STCF_R"
+        },
+        {
+          "id": "task_1775897254379",
+          "name": "二轮提测",
+          "phases": [
+            {
+              "type": "提测",
+              "startDate": "2026-05-15",
+              "endDate": "2026-05-15"
+            }
+          ],
+          "project": "STCF_R"
+        },
+        {
+          "id": "task_1775897438903",
+          "name": "必测项",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-05-11",
+              "endDate": "2026-05-14"
+            }
+          ],
+          "project": "STCF_R"
+        },
+        {
+          "id": "task_1775897494644",
+          "name": "降本兼容",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-27",
+              "endDate": "2026-04-30"
+            },
+            {
+              "id": 1775890929010,
+              "type": "测试",
+              "startDate": "2026-05-06",
+              "endDate": "2026-05-09"
+            }
+          ],
+          "project": "STCF_R"
+        },
+        {
+          "id": "task_1775899373278",
+          "name": "二轮问题消缺",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-05-18",
+              "endDate": "2026-05-23"
+            },
+            {
+              "id": 1775890929017,
+              "type": "测试",
+              "startDate": "2026-05-25",
+              "endDate": "2026-05-26"
+            }
+          ],
+          "project": "STCF_TR5-2"
+        },
+        {
+          "id": "task_1775899504895",
+          "name": "必测项",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-05-27",
+              "endDate": "2026-05-29"
+            }
+          ],
+          "project": "STCF_TR5-2"
+        },
+        {
+          "id": "task_1775899550627",
+          "name": "二轮提测",
+          "phases": [
+            {
+              "type": "提测",
+              "startDate": "2026-05-30",
+              "endDate": "2026-05-30"
+            }
+          ],
+          "project": "STCF_TR5-2"
+        },
+        {
+          "id": "task_1775896664190",
+          "name": "共底座",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-13",
+              "endDate": "2026-04-17"
+            },
+            {
+              "id": 1775890929006,
+              "type": "测试",
+              "startDate": "2026-04-17",
+              "endDate": "2026-04-18"
+            }
+          ],
+          "project": "STCF_R"
+        },
+        {
+          "id": "task_1775896197563",
+          "name": "一体机、分体机兼容",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-28",
+              "endDate": "2026-05-01"
+            },
+            {
+              "id": 1775890929003,
+              "type": "测试",
+              "startDate": "2026-05-03",
+              "endDate": "2026-05-04"
+            }
+          ],
+          "project": "SBH2.0"
+        }
+      ]
+    },
+    {
+      "executor": "黄先安",
+      "tasks": [
+        {
+          "id": 1775629591556,
+          "name": "动态投切",
+          "project": "SBH",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-08",
+              "endDate": "2026-04-09"
+            },
+            {
+              "id": 1775629591557,
+              "type": "测试",
+              "startDate": "2026-04-11",
+              "endDate": "2026-04-11"
+            }
+          ]
+        },
+        {
+          "id": "task_1775632704229",
+          "name": "SOC优化",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-13",
+              "endDate": "2026-04-14"
+            }
+          ],
+          "project": "SBH"
+        },
+        {
+          "id": "task_1775632732212",
+          "name": "质保信息",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-15",
+              "endDate": "2026-04-16"
+            }
+          ],
+          "project": "SBH"
+        },
+        {
+          "id": "task_1775632761732",
+          "name": "日志导出问题排查",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-17",
+              "endDate": "2026-04-18"
+            }
+          ],
+          "project": "SBH"
+        },
+        {
+          "id": "task_1775632800316",
+          "name": "72ah项目变更",
+          "phases": [
+            {
+              "type": "提测",
+              "startDate": "2026-04-10",
+              "endDate": "2026-04-10"
+            }
+          ],
+          "project": "SBH"
+        }
+      ]
+    },
+    {
+      "executor": "杨顺",
+      "tasks": [
+        {
+          "id": 1775119339287,
+          "name": "中间层",
+          "phases": [
+            {
+              "type": "测试",
+              "startDate": "2026-04-02",
+              "endDate": "2026-04-02"
+            }
+          ],
+          "project": "SBH2.0"
+        },
+        {
+          "id": "task_1775894472775",
+          "name": "AFE开发",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-13",
+              "endDate": "2026-04-18"
+            },
+            {
+              "id": 1775890928999,
+              "type": "测试",
+              "startDate": "2026-04-20",
+              "endDate": "2026-04-25"
+            }
+          ],
+          "project": "PT3.0"
+        },
+        {
+          "id": "task_1775897768356",
+          "name": "降本兼容",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-27",
+              "endDate": "2026-04-28"
+            },
+            {
+              "id": 1775890929011,
+              "type": "测试",
+              "startDate": "2026-04-29",
+              "endDate": "2026-04-30"
+            }
+          ],
+          "project": "STCF_R"
+        }
+      ]
+    },
+    {
+      "executor": "杨劲楠",
+      "tasks": [
+        {
+          "id": 1775890929015,
+          "name": "主动均衡",
+          "project": "STCF_R",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-27",
+              "endDate": "2026-04-30"
+            },
+            {
+              "id": 1775890929016,
+              "type": "测试",
+              "startDate": "2026-05-07",
+              "endDate": "2026-05-10"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "executor": "张志成",
+      "tasks": [
+        {
+          "id": 1775890929012,
+          "name": "降本中间层兼容",
+          "project": "STCF_R",
+          "phases": [
+            {
+              "type": "开发",
+              "startDate": "2026-04-27",
+              "endDate": "2026-04-28"
+            },
+            {
+              "id": 1775890929013,
+              "type": "测试",
+              "startDate": "2026-04-29",
+              "endDate": "2026-04-30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "executor": "待定",
+      "tasks": [
+        {
+          "id": 1775712223089,
+          "name": "待定",
+          "project": "SBH2.0",
+          "phases": []
+        }
+      ]
     }
   ],
   "colorConfig": {
-    "计划": "#3498db",
-    "执行": "#2ecc71",
-    "检查": "#f39c12",
-    "收尾": "#e74c3c",
-    "其他": "#95a5a6"
+    "开发": "#5bdd2c",
+    "调试": "#ca88e2",
+    "测试": "#e8c030",
+    "提测": "#f40101",
+    "休假": "#bdc1c2"
   },
   "holidays": [
     {
-      "id": 1,
-      "date": "2026-01-01",
-      "name": "元旦"
+      "id": 1775106506671.78,
+      "date": "2026-04-04",
+      "name": "清明节"
     },
     {
-      "id": 2,
-      "date": "2026-02-01",
-      "name": "春节"
-    },
-    {
-      "id": 3,
-      "date": "2026-02-02",
-      "name": "春节"
-    },
-    {
-      "id": 4,
-      "date": "2026-02-03",
-      "name": "春节"
-    },
-    {
-      "id": 5,
-      "date": "2026-02-04",
-      "name": "春节"
-    },
-    {
-      "id": 6,
-      "date": "2026-02-05",
-      "name": "春节"
-    },
-    {
-      "id": 7,
-      "date": "2026-02-06",
-      "name": "春节"
-    },
-    {
-      "id": 8,
-      "date": "2026-02-07",
-      "name": "春节"
-    },
-    {
-      "id": 9,
+      "id": 1775106506671.2332,
       "date": "2026-04-05",
       "name": "清明节"
     },
     {
-      "id": 10,
+      "id": 1775106506671.85,
+      "date": "2026-04-06",
+      "name": "清明节"
+    },
+    {
+      "id": 1775549402665,
       "date": "2026-05-01",
       "name": "劳动节"
     },
     {
-      "id": 11,
+      "id": 1775549402666,
       "date": "2026-05-02",
       "name": "劳动节"
     },
     {
-      "id": 12,
+      "id": 1775549402667,
       "date": "2026-05-03",
       "name": "劳动节"
     },
     {
-      "id": 13,
-      "date": "2026-06-25",
-      "name": "端午节"
+      "id": 1775549402668,
+      "date": "2026-05-04",
+      "name": "劳动节"
     },
     {
-      "id": 14,
-      "date": "2026-06-26",
-      "name": "端午节"
-    },
-    {
-      "id": 15,
-      "date": "2026-06-27",
-      "name": "端午节"
-    },
-    {
-      "id": 16,
-      "date": "2026-10-01",
-      "name": "国庆节"
-    },
-    {
-      "id": 17,
-      "date": "2026-10-02",
-      "name": "国庆节"
-    },
-    {
-      "id": 18,
-      "date": "2026-10-03",
-      "name": "国庆节"
-    },
-    {
-      "id": 19,
-      "date": "2026-10-04",
-      "name": "国庆节"
-    },
-    {
-      "id": 20,
-      "date": "2026-10-05",
-      "name": "国庆节"
-    },
-    {
-      "id": 21,
-      "date": "2026-10-06",
-      "name": "国庆节"
-    },
-    {
-      "id": 22,
-      "date": "2026-10-07",
-      "name": "国庆节"
+      "id": 1775549402669,
+      "date": "2026-05-05",
+      "name": "劳动节"
     }
   ],
-  "saturdayWorkday": false,
+  "saturdayWorkday": true,
   "sundayWorkday": false,
   "projectList": [
-    "项目A",
-    "项目B"
+    "SBH2.0",
+    "STCF_R",
+    "SBL二供电芯导入",
+    "SBH",
+    "SBS",
+    "SBR",
+    "JET",
+    "PS3.0",
+    "其他",
+    "PT3.0",
+    "STCF_TR5-2"
   ],
   "executorList": [
-    "张三",
-    "李四",
-    "王五",
-    "添加任务"
+    "董阿龙",
+    "胡勇兵",
+    "翁同童",
+    "胡启龙",
+    "王浩宇",
+    "柳章启",
+    "肖洋",
+    "杭兵",
+    "孙平川",
+    "孟浩祥",
+    "廖凯文",
+    "朱元木",
+    "黄先安",
+    "杨顺",
+    "杨劲楠",
+    "张志成",
+    "待定"
   ],
   "projectColorConfig": {
-    "项目A": "#3498db",
-    "项目B": "#2ecc71"
+    "SBH2.0": "#3498db",
+    "STCF_R": "#2ecc71",
+    "SBL二供电芯导入": "#11a688",
+    "SBH": "#77c841",
+    "SBS": "#a033db",
+    "SBR": "#64b0e3",
+    "JET": "#224f6d",
+    "PS3.0": "#1a7a2a",
+    "其他": "#a033db",
+    "PT3.0": "#dbc533",
+    "STCF_TR5-2": "#3498db"
   },
-  "startDate": "2026-01-01",
+  "startDate": "2026-04-01",
   "endDate": "2026-06-30",
   "hideProjectBarWhenSingleProject": true
 }

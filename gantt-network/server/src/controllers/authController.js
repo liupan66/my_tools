@@ -8,7 +8,7 @@ const userStorage = new Storage(config.data.usersPath);
 class AuthController {
   static async register(req, res) {
     try {
-      const { username, password, email } = req.body;
+      const { username, password } = req.body;
 
       if (!username || !password) {
         return res.status(400).json({
@@ -31,7 +31,6 @@ class AuthController {
       const newUser = userStorage.create({
         username,
         password: password,
-        email: email || '',
         role: isFirstUser ? config.roles.admin : config.roles.user,
         permissions: isFirstUser 
           ? [config.permissions.read, config.permissions.write, config.permissions.delete, config.permissions.admin]
@@ -55,7 +54,6 @@ class AuthController {
           user: {
             id: newUser.id,
             username: newUser.username,
-            email: newUser.email,
             role: newUser.role,
             permissions: newUser.permissions
           }
@@ -119,7 +117,6 @@ class AuthController {
           user: {
             id: user.id,
             username: user.username,
-            email: user.email,
             role: user.role,
             permissions: user.permissions
           }
@@ -151,7 +148,6 @@ class AuthController {
         data: {
           id: user.id,
           username: user.username,
-          email: user.email,
           role: user.role,
           permissions: user.permissions,
           createdAt: user.createdAt

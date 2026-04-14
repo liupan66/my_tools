@@ -5,12 +5,14 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const path = require('path');
+const fs = require('fs');
 const schedule = require('node-schedule');
 
 const config = require('./config');
 const logger = require('./utils/logger');
 const metrics = require('./utils/metrics');
 const monitorMiddleware = require('./middleware/monitor');
+const JWTUtil = require('./utils/jwt');
 
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
@@ -47,9 +49,50 @@ app.use('/api', healthRoutes);
 
 const ganttDataPath = path.join(__dirname, config.data.ganttDataPath);
 
+const authMiddleware = require('./middleware/auth');
+
+app.get('/api/gantt-data', authMiddleware, (req, res) => {
+  try {
+    const data = readGanttData();
+    res.json({
+      success: true,
+      data: data
+    });
+  } catch (error) {
+    logger.error('获取甘特图数据失败', error);
+    res.status(500).json({
+      success: false,
+      message: '获取数据失败'
+    });
+  }
+});
+
+app.post('/api/gantt-data', authMiddleware, (req, res) => {
+  try {
+    const data = req.body;
+    const success = writeGanttData(data);
+    if (success) {
+      res.json({
+        success: true,
+        message: '数据保存成功'
+      });
+    } else {
+      res.status(500).json({
+        success: false,
+        message: '保存数据失败'
+      });
+    }
+  } catch (error) {
+    logger.error('保存甘特图数据失败', error);
+    res.status(500).json({
+      success: false,
+      message: '保存数据失败'
+    });
+  }
+});
+
 function readGanttData() {
   try {
-    const fs = require('fs');
     if (fs.existsSync(ganttDataPath)) {
       const data = fs.readFileSync(ganttDataPath, 'utf8');
       return JSON.parse(data);
@@ -63,7 +106,6 @@ function readGanttData() {
 
 function writeGanttData(data) {
   try {
-    const fs = require('fs');
     const dataDir = path.dirname(ganttDataPath);
     if (!fs.existsSync(dataDir)) {
       fs.mkdirSync(dataDir, { recursive: true });
@@ -75,8 +117,6 @@ function writeGanttData(data) {
     return false;
   }
 }
-
-const JWTUtil = require('./utils/jwt');
 
 io.on('connection', (socket) => {
   logger.info('新客户端连接', { socketId: socket.id });

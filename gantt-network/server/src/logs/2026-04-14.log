@@ -422,3 +422,493 @@
 {"timestamp":"2026-04-14T10:18:56.196Z","level":"warn","message":"Socket连接未提供token","data":{"socketId":"Eaw3zxQTERvNdKZLAAAD"}}
 {"timestamp":"2026-04-14T10:18:56.303Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
 {"timestamp":"2026-04-14T10:18:56.303Z","level":"info","message":"::1 - - [14/Apr/2026:10:18:56 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:11:58.539Z","level":"info","message":"服务器启动","data":{"port":8000,"localUrl":"http://localhost:8000","networkUrl":"http://192.168.164.128:8000"}}
+{"timestamp":"2026-04-14T11:12:08.043Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/","statusCode":200,"duration":"9ms"}}
+{"timestamp":"2026-04-14T11:12:08.048Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:12:08 +0000] \"GET / HTTP/1.1\" 200 327743 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:12:08.138Z","level":"info","message":"新客户端连接","data":{"socketId":"FuNBOODhVQKGgJyKAAAB"}}
+{"timestamp":"2026-04-14T11:12:08.139Z","level":"warn","message":"Socket连接未提供token","data":{"socketId":"FuNBOODhVQKGgJyKAAAB"}}
+{"timestamp":"2026-04-14T11:12:08.148Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/favicon.ico","statusCode":404,"duration":"4ms"}}
+{"timestamp":"2026-04-14T11:12:08.149Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:12:08 +0000] \"GET /favicon.ico HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:12:08.246Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"2ms"}}
+{"timestamp":"2026-04-14T11:12:08.254Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:12:08 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:12:08.268Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/login.html","statusCode":200,"duration":"2ms"}}
+{"timestamp":"2026-04-14T11:12:08.279Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:12:08 +0000] \"GET /login.html HTTP/1.1\" 200 5362 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:12:08.303Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:12:08 +0000] \"GET /login.html HTTP/1.1\" - - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:12:08.309Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:12:08 +0000] \"GET /login.html HTTP/1.1\" - - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:12:08.312Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:12:08 +0000] \"GET /login.html HTTP/1.1\" - - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:12:08.317Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:12:08 +0000] \"GET /login.html HTTP/1.1\" - - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:12:08.318Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:12:08 +0000] \"GET /login.html HTTP/1.1\" - - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:12:08.320Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:12:08 +0000] \"GET /login.html HTTP/1.1\" - - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:12:08.324Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/login.html","statusCode":200,"duration":"2ms"}}
+{"timestamp":"2026-04-14T11:12:08.325Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:12:08 +0000] \"GET /login.html HTTP/1.1\" 200 5362 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:12:08.330Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/login.html","statusCode":200,"duration":"2ms"}}
+{"timestamp":"2026-04-14T11:12:08.330Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:12:08 +0000] \"GET /login.html HTTP/1.1\" 200 5362 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:12:16.679Z","level":"info","message":"User logged in successfully","data":{"userId":"1776091109345","username":"admin"}}
+{"timestamp":"2026-04-14T11:12:16.681Z","level":"info","message":"Request completed","data":{"method":"POST","path":"/api/auth/login","statusCode":200,"duration":"21ms"}}
+{"timestamp":"2026-04-14T11:12:16.682Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:12:16 +0000] \"POST /api/auth/login HTTP/1.1\" 200 470 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:12:17.712Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":200,"duration":"4ms"}}
+{"timestamp":"2026-04-14T11:12:17.713Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:12:17 +0000] \"GET /index.html HTTP/1.1\" 200 327743 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:12:17.739Z","level":"info","message":"新客户端连接","data":{"socketId":"GGpJPG3D04xhORSpAAAD"}}
+{"timestamp":"2026-04-14T11:12:17.740Z","level":"warn","message":"Socket连接未提供token","data":{"socketId":"GGpJPG3D04xhORSpAAAD"}}
+{"timestamp":"2026-04-14T11:12:17.845Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:12:17.867Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:12:17 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:19:07.221Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":200,"duration":"8ms"}}
+{"timestamp":"2026-04-14T11:19:07.223Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:19:07 +0000] \"GET /index.html HTTP/1.1\" 200 327960 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:19:07.280Z","level":"info","message":"新客户端连接","data":{"socketId":"WBEoPCEnIKRUwFE7AAAF"}}
+{"timestamp":"2026-04-14T11:19:07.301Z","level":"warn","message":"Socket连接未提供token","data":{"socketId":"WBEoPCEnIKRUwFE7AAAF"}}
+{"timestamp":"2026-04-14T11:19:07.385Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:19:07.386Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:19:07 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:19:13.482Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":200,"duration":"4ms"}}
+{"timestamp":"2026-04-14T11:19:13.483Z","level":"info","message":"::1 - - [14/Apr/2026:11:19:13 +0000] \"GET /index.html HTTP/1.1\" 200 327960 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:19:13.579Z","level":"info","message":"新客户端连接","data":{"socketId":"ydLtjGPS2GmUI_BXAAAH"}}
+{"timestamp":"2026-04-14T11:19:13.581Z","level":"warn","message":"Socket连接未提供token","data":{"socketId":"ydLtjGPS2GmUI_BXAAAH"}}
+{"timestamp":"2026-04-14T11:19:13.587Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/favicon.ico","statusCode":404,"duration":"2ms"}}
+{"timestamp":"2026-04-14T11:19:13.590Z","level":"info","message":"::1 - - [14/Apr/2026:11:19:13 +0000] \"GET /favicon.ico HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:19:13.975Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:19:13.976Z","level":"info","message":"::1 - - [14/Apr/2026:11:19:13 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:19:15.101Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"0ms"}}
+{"timestamp":"2026-04-14T11:19:15.103Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:19:15 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:19:15.128Z","level":"info","message":"新客户端连接","data":{"socketId":"GLte-Z8_axPSw0H0AAAJ"}}
+{"timestamp":"2026-04-14T11:19:15.129Z","level":"warn","message":"Socket连接未提供token","data":{"socketId":"GLte-Z8_axPSw0H0AAAJ"}}
+{"timestamp":"2026-04-14T11:19:15.232Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:19:15.233Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:19:15 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:19:30.597Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:19:30.598Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:19:30 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:19:30.624Z","level":"info","message":"新客户端连接","data":{"socketId":"RmJRXGHR8-zDvo8PAAAL"}}
+{"timestamp":"2026-04-14T11:19:30.625Z","level":"warn","message":"Socket连接未提供token","data":{"socketId":"RmJRXGHR8-zDvo8PAAAL"}}
+{"timestamp":"2026-04-14T11:19:30.735Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:19:30.736Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:19:30 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:19:31.088Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:19:31.089Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:19:31 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:19:31.111Z","level":"info","message":"新客户端连接","data":{"socketId":"iCJkstfUs3RRlJzWAAAN"}}
+{"timestamp":"2026-04-14T11:19:31.112Z","level":"warn","message":"Socket连接未提供token","data":{"socketId":"iCJkstfUs3RRlJzWAAAN"}}
+{"timestamp":"2026-04-14T11:19:31.217Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:19:31.217Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:19:31 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:19:31.818Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:19:31.819Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:19:31 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:19:31.842Z","level":"info","message":"新客户端连接","data":{"socketId":"cV8-k3nPfafd6QDAAAAP"}}
+{"timestamp":"2026-04-14T11:19:31.844Z","level":"warn","message":"Socket连接未提供token","data":{"socketId":"cV8-k3nPfafd6QDAAAAP"}}
+{"timestamp":"2026-04-14T11:19:31.945Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:19:31.946Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:19:31 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:19:32.002Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"0ms"}}
+{"timestamp":"2026-04-14T11:19:32.004Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:19:32 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:19:32.040Z","level":"info","message":"新客户端连接","data":{"socketId":"rBSfYwmcKIsTA1HJAAAR"}}
+{"timestamp":"2026-04-14T11:19:32.046Z","level":"warn","message":"Socket连接未提供token","data":{"socketId":"rBSfYwmcKIsTA1HJAAAR"}}
+{"timestamp":"2026-04-14T11:19:32.145Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:19:32.146Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:19:32 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:19:32.348Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:19:32.349Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:19:32 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:19:32.381Z","level":"info","message":"新客户端连接","data":{"socketId":"Yjzotj-pzEZhUt6WAAAT"}}
+{"timestamp":"2026-04-14T11:19:32.384Z","level":"warn","message":"Socket连接未提供token","data":{"socketId":"Yjzotj-pzEZhUt6WAAAT"}}
+{"timestamp":"2026-04-14T11:19:32.497Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:19:32.498Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:19:32 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:19:32.924Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"0ms"}}
+{"timestamp":"2026-04-14T11:19:32.926Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:19:32 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:19:32.949Z","level":"info","message":"新客户端连接","data":{"socketId":"2BwRFYQoXIv_B1-bAAAV"}}
+{"timestamp":"2026-04-14T11:19:32.952Z","level":"warn","message":"Socket连接未提供token","data":{"socketId":"2BwRFYQoXIv_B1-bAAAV"}}
+{"timestamp":"2026-04-14T11:19:33.055Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"0ms"}}
+{"timestamp":"2026-04-14T11:19:33.056Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:19:33 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:21:43.621Z","level":"info","message":"服务器启动","data":{"port":8000,"localUrl":"http://localhost:8000","networkUrl":"http://192.168.164.128:8000"}}
+{"timestamp":"2026-04-14T11:22:52.889Z","level":"info","message":"服务器启动","data":{"port":8000,"localUrl":"http://localhost:8000","networkUrl":"http://192.168.164.128:8000"}}
+{"timestamp":"2026-04-14T11:24:34.327Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"9ms"}}
+{"timestamp":"2026-04-14T11:24:34.328Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:34 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:34.361Z","level":"info","message":"新客户端连接","data":{"socketId":"t3AanejAwW678eN6AAAB"}}
+{"timestamp":"2026-04-14T11:24:34.362Z","level":"info","message":"Socket连接成功","data":{"socketId":"t3AanejAwW678eN6AAAB"}}
+{"timestamp":"2026-04-14T11:24:34.463Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"3ms"}}
+{"timestamp":"2026-04-14T11:24:34.463Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:34 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:34.525Z","level":"info","message":"收到数据更新","data":{"socketId":"t3AanejAwW678eN6AAAB"}}
+{"timestamp":"2026-04-14T11:24:34.796Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:34.797Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:34 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:34.810Z","level":"info","message":"客户端断开连接","data":{"socketId":"t3AanejAwW678eN6AAAB"}}
+{"timestamp":"2026-04-14T11:24:34.831Z","level":"info","message":"新客户端连接","data":{"socketId":"76NYRo2H71aJeIhyAAAD"}}
+{"timestamp":"2026-04-14T11:24:34.831Z","level":"info","message":"Socket连接成功","data":{"socketId":"76NYRo2H71aJeIhyAAAD"}}
+{"timestamp":"2026-04-14T11:24:34.932Z","level":"info","message":"收到数据更新","data":{"socketId":"76NYRo2H71aJeIhyAAAD"}}
+{"timestamp":"2026-04-14T11:24:34.935Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:34.936Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:34 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:35.218Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:35.219Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:35 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:35.235Z","level":"info","message":"客户端断开连接","data":{"socketId":"76NYRo2H71aJeIhyAAAD"}}
+{"timestamp":"2026-04-14T11:24:35.257Z","level":"info","message":"新客户端连接","data":{"socketId":"6cSr99jhFdXYdoK5AAAF"}}
+{"timestamp":"2026-04-14T11:24:35.258Z","level":"info","message":"Socket连接成功","data":{"socketId":"6cSr99jhFdXYdoK5AAAF"}}
+{"timestamp":"2026-04-14T11:24:35.377Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:35.378Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:35 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:35.413Z","level":"info","message":"收到数据更新","data":{"socketId":"6cSr99jhFdXYdoK5AAAF"}}
+{"timestamp":"2026-04-14T11:24:35.467Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"3ms"}}
+{"timestamp":"2026-04-14T11:24:35.467Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:35 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:35.482Z","level":"info","message":"客户端断开连接","data":{"socketId":"6cSr99jhFdXYdoK5AAAF"}}
+{"timestamp":"2026-04-14T11:24:35.501Z","level":"info","message":"新客户端连接","data":{"socketId":"y5LDYCuB6K0UIGW1AAAH"}}
+{"timestamp":"2026-04-14T11:24:35.502Z","level":"info","message":"Socket连接成功","data":{"socketId":"y5LDYCuB6K0UIGW1AAAH"}}
+{"timestamp":"2026-04-14T11:24:35.606Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"2ms"}}
+{"timestamp":"2026-04-14T11:24:35.606Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:35 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:35.652Z","level":"info","message":"收到数据更新","data":{"socketId":"y5LDYCuB6K0UIGW1AAAH"}}
+{"timestamp":"2026-04-14T11:24:36.105Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:36.105Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:36 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:36.111Z","level":"info","message":"客户端断开连接","data":{"socketId":"y5LDYCuB6K0UIGW1AAAH"}}
+{"timestamp":"2026-04-14T11:24:36.127Z","level":"info","message":"新客户端连接","data":{"socketId":"-gh5RBVTC_ZGfYf3AAAJ"}}
+{"timestamp":"2026-04-14T11:24:36.127Z","level":"info","message":"Socket连接成功","data":{"socketId":"-gh5RBVTC_ZGfYf3AAAJ"}}
+{"timestamp":"2026-04-14T11:24:36.241Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:36.242Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:36 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:36.276Z","level":"info","message":"收到数据更新","data":{"socketId":"-gh5RBVTC_ZGfYf3AAAJ"}}
+{"timestamp":"2026-04-14T11:24:36.618Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:36.619Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:36 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:36.627Z","level":"info","message":"客户端断开连接","data":{"socketId":"-gh5RBVTC_ZGfYf3AAAJ"}}
+{"timestamp":"2026-04-14T11:24:36.642Z","level":"info","message":"新客户端连接","data":{"socketId":"kmXWI-O4bQU4UJ04AAAL"}}
+{"timestamp":"2026-04-14T11:24:36.643Z","level":"info","message":"Socket连接成功","data":{"socketId":"kmXWI-O4bQU4UJ04AAAL"}}
+{"timestamp":"2026-04-14T11:24:36.746Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:36.747Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:36 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:36.776Z","level":"info","message":"收到数据更新","data":{"socketId":"kmXWI-O4bQU4UJ04AAAL"}}
+{"timestamp":"2026-04-14T11:24:37.079Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:37.079Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:37 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:37.085Z","level":"info","message":"客户端断开连接","data":{"socketId":"kmXWI-O4bQU4UJ04AAAL"}}
+{"timestamp":"2026-04-14T11:24:37.101Z","level":"info","message":"新客户端连接","data":{"socketId":"9OJZfitVGeGTVsCFAAAN"}}
+{"timestamp":"2026-04-14T11:24:37.101Z","level":"info","message":"Socket连接成功","data":{"socketId":"9OJZfitVGeGTVsCFAAAN"}}
+{"timestamp":"2026-04-14T11:24:37.209Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:37.209Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:37 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:37.240Z","level":"info","message":"收到数据更新","data":{"socketId":"9OJZfitVGeGTVsCFAAAN"}}
+{"timestamp":"2026-04-14T11:24:41.225Z","level":"info","message":"收到数据更新","data":{"socketId":"9OJZfitVGeGTVsCFAAAN"}}
+{"timestamp":"2026-04-14T11:24:43.993Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:43.993Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:43 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:43.998Z","level":"info","message":"客户端断开连接","data":{"socketId":"9OJZfitVGeGTVsCFAAAN"}}
+{"timestamp":"2026-04-14T11:24:44.022Z","level":"info","message":"新客户端连接","data":{"socketId":"28FtH4yWhbqRoRZmAAAP"}}
+{"timestamp":"2026-04-14T11:24:44.022Z","level":"info","message":"Socket连接成功","data":{"socketId":"28FtH4yWhbqRoRZmAAAP"}}
+{"timestamp":"2026-04-14T11:24:44.125Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:44.126Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:44 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:44.169Z","level":"info","message":"收到数据更新","data":{"socketId":"28FtH4yWhbqRoRZmAAAP"}}
+{"timestamp":"2026-04-14T11:24:44.743Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:44.743Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:44 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:44.748Z","level":"info","message":"客户端断开连接","data":{"socketId":"28FtH4yWhbqRoRZmAAAP"}}
+{"timestamp":"2026-04-14T11:24:44.768Z","level":"info","message":"新客户端连接","data":{"socketId":"O3O4V0vBT8AhoiUbAAAR"}}
+{"timestamp":"2026-04-14T11:24:44.768Z","level":"info","message":"Socket连接成功","data":{"socketId":"O3O4V0vBT8AhoiUbAAAR"}}
+{"timestamp":"2026-04-14T11:24:44.874Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:44.875Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:44 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:44.907Z","level":"info","message":"收到数据更新","data":{"socketId":"O3O4V0vBT8AhoiUbAAAR"}}
+{"timestamp":"2026-04-14T11:24:44.944Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:44.944Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:44 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:44.954Z","level":"info","message":"客户端断开连接","data":{"socketId":"O3O4V0vBT8AhoiUbAAAR"}}
+{"timestamp":"2026-04-14T11:24:44.973Z","level":"info","message":"新客户端连接","data":{"socketId":"ZYr_OHtmBMOGCzD9AAAT"}}
+{"timestamp":"2026-04-14T11:24:44.974Z","level":"info","message":"Socket连接成功","data":{"socketId":"ZYr_OHtmBMOGCzD9AAAT"}}
+{"timestamp":"2026-04-14T11:24:45.077Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:45.078Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:45 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:45.142Z","level":"info","message":"收到数据更新","data":{"socketId":"ZYr_OHtmBMOGCzD9AAAT"}}
+{"timestamp":"2026-04-14T11:24:45.207Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:45.207Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:45 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:45.214Z","level":"info","message":"客户端断开连接","data":{"socketId":"ZYr_OHtmBMOGCzD9AAAT"}}
+{"timestamp":"2026-04-14T11:24:45.230Z","level":"info","message":"新客户端连接","data":{"socketId":"bemP__qwcC7zALkEAAAV"}}
+{"timestamp":"2026-04-14T11:24:45.231Z","level":"info","message":"Socket连接成功","data":{"socketId":"bemP__qwcC7zALkEAAAV"}}
+{"timestamp":"2026-04-14T11:24:45.303Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"0ms"}}
+{"timestamp":"2026-04-14T11:24:45.304Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:45 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:45.311Z","level":"info","message":"客户端断开连接","data":{"socketId":"bemP__qwcC7zALkEAAAV"}}
+{"timestamp":"2026-04-14T11:24:45.323Z","level":"info","message":"新客户端连接","data":{"socketId":"m0TjxNRLMaYqEjvfAAAX"}}
+{"timestamp":"2026-04-14T11:24:45.323Z","level":"info","message":"Socket连接成功","data":{"socketId":"m0TjxNRLMaYqEjvfAAAX"}}
+{"timestamp":"2026-04-14T11:24:45.443Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:45.444Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:45 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:45.458Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"2ms"}}
+{"timestamp":"2026-04-14T11:24:45.458Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:45 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:45.461Z","level":"info","message":"收到数据更新","data":{"socketId":"m0TjxNRLMaYqEjvfAAAX"}}
+{"timestamp":"2026-04-14T11:24:45.469Z","level":"info","message":"客户端断开连接","data":{"socketId":"m0TjxNRLMaYqEjvfAAAX"}}
+{"timestamp":"2026-04-14T11:24:45.494Z","level":"info","message":"新客户端连接","data":{"socketId":"65yssNsT-jUww3rMAAAZ"}}
+{"timestamp":"2026-04-14T11:24:45.494Z","level":"info","message":"Socket连接成功","data":{"socketId":"65yssNsT-jUww3rMAAAZ"}}
+{"timestamp":"2026-04-14T11:24:45.594Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:45.595Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:45 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:45.624Z","level":"info","message":"收到数据更新","data":{"socketId":"65yssNsT-jUww3rMAAAZ"}}
+{"timestamp":"2026-04-14T11:24:45.638Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"2ms"}}
+{"timestamp":"2026-04-14T11:24:45.639Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:45 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:45.651Z","level":"info","message":"客户端断开连接","data":{"socketId":"65yssNsT-jUww3rMAAAZ"}}
+{"timestamp":"2026-04-14T11:24:45.670Z","level":"info","message":"新客户端连接","data":{"socketId":"WgrS8o4YbtgwjbOzAAAb"}}
+{"timestamp":"2026-04-14T11:24:45.671Z","level":"info","message":"Socket连接成功","data":{"socketId":"WgrS8o4YbtgwjbOzAAAb"}}
+{"timestamp":"2026-04-14T11:24:45.781Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:45.781Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:45 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:45.796Z","level":"info","message":"收到数据更新","data":{"socketId":"WgrS8o4YbtgwjbOzAAAb"}}
+{"timestamp":"2026-04-14T11:24:45.960Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"0ms"}}
+{"timestamp":"2026-04-14T11:24:45.961Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:45 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:45.968Z","level":"info","message":"客户端断开连接","data":{"socketId":"WgrS8o4YbtgwjbOzAAAb"}}
+{"timestamp":"2026-04-14T11:24:45.985Z","level":"info","message":"新客户端连接","data":{"socketId":"ld8PcBK7IDFtVn4BAAAd"}}
+{"timestamp":"2026-04-14T11:24:45.986Z","level":"info","message":"Socket连接成功","data":{"socketId":"ld8PcBK7IDFtVn4BAAAd"}}
+{"timestamp":"2026-04-14T11:24:46.088Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:46.088Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:46 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:46.119Z","level":"info","message":"收到数据更新","data":{"socketId":"ld8PcBK7IDFtVn4BAAAd"}}
+{"timestamp":"2026-04-14T11:24:46.122Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:46.122Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:46 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:46.127Z","level":"info","message":"客户端断开连接","data":{"socketId":"ld8PcBK7IDFtVn4BAAAd"}}
+{"timestamp":"2026-04-14T11:24:46.143Z","level":"info","message":"新客户端连接","data":{"socketId":"W4pswqYx3rs-WJ7pAAAf"}}
+{"timestamp":"2026-04-14T11:24:46.144Z","level":"info","message":"Socket连接成功","data":{"socketId":"W4pswqYx3rs-WJ7pAAAf"}}
+{"timestamp":"2026-04-14T11:24:46.262Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:24:46.263Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:24:46 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:24:46.275Z","level":"info","message":"收到数据更新","data":{"socketId":"W4pswqYx3rs-WJ7pAAAf"}}
+{"timestamp":"2026-04-14T11:26:13.202Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":200,"duration":"7ms"}}
+{"timestamp":"2026-04-14T11:26:13.203Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:13 +0000] \"GET /index.html HTTP/1.1\" 200 328983 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:13.222Z","level":"info","message":"客户端断开连接","data":{"socketId":"W4pswqYx3rs-WJ7pAAAf"}}
+{"timestamp":"2026-04-14T11:26:13.240Z","level":"info","message":"新客户端连接","data":{"socketId":"q_xcsTpvz2XWOt70AAAh"}}
+{"timestamp":"2026-04-14T11:26:13.241Z","level":"info","message":"Socket连接成功","data":{"socketId":"q_xcsTpvz2XWOt70AAAh"}}
+{"timestamp":"2026-04-14T11:26:13.344Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/gantt-data","statusCode":200,"duration":"3ms"}}
+{"timestamp":"2026-04-14T11:26:13.346Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:13 +0000] \"GET /api/gantt-data HTTP/1.1\" 200 2284 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:13.354Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:26:13.354Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:13 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:13.373Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"2ms"}}
+{"timestamp":"2026-04-14T11:26:13.374Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:13 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:13.383Z","level":"info","message":"客户端断开连接","data":{"socketId":"q_xcsTpvz2XWOt70AAAh"}}
+{"timestamp":"2026-04-14T11:26:13.412Z","level":"info","message":"新客户端连接","data":{"socketId":"eWGTAMhnjUAZfJ85AAAj"}}
+{"timestamp":"2026-04-14T11:26:13.413Z","level":"info","message":"Socket连接成功","data":{"socketId":"eWGTAMhnjUAZfJ85AAAj"}}
+{"timestamp":"2026-04-14T11:26:13.512Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/gantt-data","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:26:13.512Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:13 +0000] \"GET /api/gantt-data HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:13.519Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"0ms"}}
+{"timestamp":"2026-04-14T11:26:13.520Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:13 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:13.577Z","level":"info","message":"收到数据更新","data":{"socketId":"eWGTAMhnjUAZfJ85AAAj"}}
+{"timestamp":"2026-04-14T11:26:20.016Z","level":"info","message":"收到数据更新","data":{"socketId":"eWGTAMhnjUAZfJ85AAAj"}}
+{"timestamp":"2026-04-14T11:26:22.894Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:26:22.895Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:22 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:22.907Z","level":"info","message":"客户端断开连接","data":{"socketId":"eWGTAMhnjUAZfJ85AAAj"}}
+{"timestamp":"2026-04-14T11:26:22.933Z","level":"info","message":"新客户端连接","data":{"socketId":"x0QjepQX9QTuyFm5AAAl"}}
+{"timestamp":"2026-04-14T11:26:22.933Z","level":"info","message":"Socket连接成功","data":{"socketId":"x0QjepQX9QTuyFm5AAAl"}}
+{"timestamp":"2026-04-14T11:26:23.031Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/gantt-data","statusCode":200,"duration":"2ms"}}
+{"timestamp":"2026-04-14T11:26:23.032Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:23 +0000] \"GET /api/gantt-data HTTP/1.1\" 200 17769 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:23.042Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:26:23.042Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:23 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:23.102Z","level":"info","message":"收到数据更新","data":{"socketId":"x0QjepQX9QTuyFm5AAAl"}}
+{"timestamp":"2026-04-14T11:26:23.730Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:26:23.731Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:23 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:23.737Z","level":"info","message":"客户端断开连接","data":{"socketId":"x0QjepQX9QTuyFm5AAAl"}}
+{"timestamp":"2026-04-14T11:26:23.754Z","level":"info","message":"新客户端连接","data":{"socketId":"zy2o-ROSB17DsKFpAAAn"}}
+{"timestamp":"2026-04-14T11:26:23.755Z","level":"info","message":"Socket连接成功","data":{"socketId":"zy2o-ROSB17DsKFpAAAn"}}
+{"timestamp":"2026-04-14T11:26:23.869Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/gantt-data","statusCode":200,"duration":"3ms"}}
+{"timestamp":"2026-04-14T11:26:23.870Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:23 +0000] \"GET /api/gantt-data HTTP/1.1\" 200 17589 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:23.876Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"0ms"}}
+{"timestamp":"2026-04-14T11:26:23.877Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:23 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:23.878Z","level":"info","message":"收到数据更新","data":{"socketId":"zy2o-ROSB17DsKFpAAAn"}}
+{"timestamp":"2026-04-14T11:26:24.156Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:26:24.156Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:24 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:24.162Z","level":"info","message":"客户端断开连接","data":{"socketId":"zy2o-ROSB17DsKFpAAAn"}}
+{"timestamp":"2026-04-14T11:26:24.184Z","level":"info","message":"新客户端连接","data":{"socketId":"i6I6fpE4NV3sjQ2KAAAp"}}
+{"timestamp":"2026-04-14T11:26:24.184Z","level":"info","message":"Socket连接成功","data":{"socketId":"i6I6fpE4NV3sjQ2KAAAp"}}
+{"timestamp":"2026-04-14T11:26:24.283Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/gantt-data","statusCode":304,"duration":"2ms"}}
+{"timestamp":"2026-04-14T11:26:24.283Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:24 +0000] \"GET /api/gantt-data HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:24.289Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"0ms"}}
+{"timestamp":"2026-04-14T11:26:24.290Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:24 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:24.320Z","level":"info","message":"收到数据更新","data":{"socketId":"i6I6fpE4NV3sjQ2KAAAp"}}
+{"timestamp":"2026-04-14T11:26:24.322Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"2ms"}}
+{"timestamp":"2026-04-14T11:26:24.322Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:24 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:24.333Z","level":"info","message":"客户端断开连接","data":{"socketId":"i6I6fpE4NV3sjQ2KAAAp"}}
+{"timestamp":"2026-04-14T11:26:24.350Z","level":"info","message":"新客户端连接","data":{"socketId":"xAowSQD3hsAhBbgxAAAr"}}
+{"timestamp":"2026-04-14T11:26:24.351Z","level":"info","message":"Socket连接成功","data":{"socketId":"xAowSQD3hsAhBbgxAAAr"}}
+{"timestamp":"2026-04-14T11:26:24.462Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/gantt-data","statusCode":304,"duration":"4ms"}}
+{"timestamp":"2026-04-14T11:26:24.463Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:24 +0000] \"GET /api/gantt-data HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:24.476Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:26:24.476Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:24 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:24.488Z","level":"info","message":"收到数据更新","data":{"socketId":"xAowSQD3hsAhBbgxAAAr"}}
+{"timestamp":"2026-04-14T11:26:24.518Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:26:24.519Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:24 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:24.545Z","level":"info","message":"客户端断开连接","data":{"socketId":"xAowSQD3hsAhBbgxAAAr"}}
+{"timestamp":"2026-04-14T11:26:24.571Z","level":"info","message":"新客户端连接","data":{"socketId":"ogCLjYTule0F81teAAAt"}}
+{"timestamp":"2026-04-14T11:26:24.572Z","level":"info","message":"Socket连接成功","data":{"socketId":"ogCLjYTule0F81teAAAt"}}
+{"timestamp":"2026-04-14T11:26:24.674Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/gantt-data","statusCode":304,"duration":"2ms"}}
+{"timestamp":"2026-04-14T11:26:24.674Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:24 +0000] \"GET /api/gantt-data HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:24.681Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:26:24.682Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:24 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:24.707Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:26:24.707Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:24 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:24.713Z","level":"info","message":"客户端断开连接","data":{"socketId":"ogCLjYTule0F81teAAAt"}}
+{"timestamp":"2026-04-14T11:26:24.734Z","level":"info","message":"新客户端连接","data":{"socketId":"p4ZfbBvfJ-bSxcoDAAAv"}}
+{"timestamp":"2026-04-14T11:26:24.734Z","level":"info","message":"Socket连接成功","data":{"socketId":"p4ZfbBvfJ-bSxcoDAAAv"}}
+{"timestamp":"2026-04-14T11:26:24.835Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/gantt-data","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T11:26:24.836Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:24 +0000] \"GET /api/gantt-data HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:24.843Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"0ms"}}
+{"timestamp":"2026-04-14T11:26:24.844Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:11:26:24 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T11:26:24.875Z","level":"info","message":"收到数据更新","data":{"socketId":"p4ZfbBvfJ-bSxcoDAAAv"}}
+{"timestamp":"2026-04-14T12:31:29.981Z","level":"info","message":"服务器启动","data":{"port":8000,"localUrl":"http://localhost:8000","networkUrl":"http://192.168.164.128:8000"}}
+{"timestamp":"2026-04-14T12:31:30.023Z","level":"info","message":"新客户端连接","data":{"socketId":"6ZC5GIKGPkrs8ZpnAAAB"}}
+{"timestamp":"2026-04-14T12:31:30.024Z","level":"info","message":"Socket连接成功","data":{"socketId":"6ZC5GIKGPkrs8ZpnAAAB"}}
+{"timestamp":"2026-04-14T12:31:51.834Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/gantt-data","statusCode":200,"duration":"5ms"}}
+{"timestamp":"2026-04-14T12:31:51.835Z","level":"info","message":"::1 - - [14/Apr/2026:12:31:51 +0000] \"GET /api/gantt-data HTTP/1.1\" 200 17589 \"-\" \"Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.19041.6456\"","data":null}
+{"timestamp":"2026-04-14T12:35:00.895Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":200,"duration":"9ms"}}
+{"timestamp":"2026-04-14T12:35:00.895Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:12:35:00 +0000] \"GET /index.html HTTP/1.1\" 200 329403 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T12:35:00.902Z","level":"info","message":"客户端断开连接","data":{"socketId":"6ZC5GIKGPkrs8ZpnAAAB"}}
+{"timestamp":"2026-04-14T12:35:00.948Z","level":"info","message":"新客户端连接","data":{"socketId":"eu341L3dEihjlS17AAAD"}}
+{"timestamp":"2026-04-14T12:35:00.949Z","level":"info","message":"Socket连接成功","data":{"socketId":"eu341L3dEihjlS17AAAD"}}
+{"timestamp":"2026-04-14T12:35:01.048Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/gantt-data","statusCode":304,"duration":"3ms"}}
+{"timestamp":"2026-04-14T12:35:01.049Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:12:35:01 +0000] \"GET /api/gantt-data HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T12:35:01.061Z","level":"info","message":"收到数据更新","data":{"socketId":"eu341L3dEihjlS17AAAD"}}
+{"timestamp":"2026-04-14T12:35:01.068Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"2ms"}}
+{"timestamp":"2026-04-14T12:35:01.069Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:12:35:01 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T12:35:11.979Z","level":"info","message":"收到数据更新","data":{"socketId":"eu341L3dEihjlS17AAAD"}}
+{"timestamp":"2026-04-14T13:45:29.117Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":200,"duration":"8ms"}}
+{"timestamp":"2026-04-14T13:45:29.118Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:13:45:29 +0000] \"GET /index.html HTTP/1.1\" 200 329139 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T13:45:29.129Z","level":"info","message":"客户端断开连接","data":{"socketId":"eu341L3dEihjlS17AAAD"}}
+{"timestamp":"2026-04-14T13:45:29.165Z","level":"info","message":"新客户端连接","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:45:29.166Z","level":"info","message":"Socket连接成功","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:45:29.277Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/gantt-data","statusCode":200,"duration":"3ms"}}
+{"timestamp":"2026-04-14T13:45:29.277Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:13:45:29 +0000] \"GET /api/gantt-data HTTP/1.1\" 200 17769 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T13:45:29.297Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T13:45:29.298Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:13:45:29 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T13:45:29.367Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:45:32.431Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:45:33.654Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:45:35.025Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:45:37.461Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:45:38.794Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:45:45.204Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:45:47.221Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:45:49.544Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:45:51.502Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:45:53.182Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:45:55.725Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:45:59.058Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:46:03.805Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:46:08.827Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:46:12.269Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:46:14.592Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:46:33.510Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:46:35.473Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:46:38.067Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T13:46:40.521Z","level":"info","message":"收到数据更新","data":{"socketId":"2TsWdO6EE9AitdPPAAAF"}}
+{"timestamp":"2026-04-14T14:24:36.844Z","level":"info","message":"服务器启动","data":{"port":8000,"localUrl":"http://localhost:8000","networkUrl":"http://192.168.164.128:8000"}}
+{"timestamp":"2026-04-14T14:24:36.978Z","level":"info","message":"新客户端连接","data":{"socketId":"FrAj6Hf2pfCscFz1AAAB"}}
+{"timestamp":"2026-04-14T14:24:36.979Z","level":"warn","message":"Socket连接未提供token","data":{"socketId":"FrAj6Hf2pfCscFz1AAAB"}}
+{"timestamp":"2026-04-14T14:25:21.491Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":200,"duration":"8ms"}}
+{"timestamp":"2026-04-14T14:25:21.492Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:25:21 +0000] \"GET /index.html HTTP/1.1\" 200 329690 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:25:21.535Z","level":"info","message":"新客户端连接","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD"}}
+{"timestamp":"2026-04-14T14:25:21.538Z","level":"info","message":"Socket连接认证成功","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:25:21.642Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/gantt-data","statusCode":200,"duration":"4ms"}}
+{"timestamp":"2026-04-14T14:25:21.643Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:25:21 +0000] \"GET /api/gantt-data HTTP/1.1\" 200 17769 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:25:21.663Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"2ms"}}
+{"timestamp":"2026-04-14T14:25:21.664Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:25:21 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:25:21.761Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:25:25.119Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:25:25.125Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:25:40.889Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:25:40.894Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:25:43.847Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:25:43.852Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:26:34.358Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:26:35.239Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:26:36.673Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:26:37.940Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:26:49.570Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:26:49.575Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:26:51.100Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:26:51.105Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:26:53.092Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:26:53.096Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:26:58.447Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:26:58.451Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:27:01.102Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:27:01.107Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:27:22.585Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:27:22.590Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:27:24.340Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:27:24.345Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:27:27.797Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:27:27.802Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:27:31.029Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:27:31.034Z","level":"info","message":"收到数据更新","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:37:07.767Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":200,"duration":"4ms"}}
+{"timestamp":"2026-04-14T14:37:07.768Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:37:07 +0000] \"GET /index.html HTTP/1.1\" 200 330269 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:37:07.779Z","level":"info","message":"客户端断开连接","data":{"socketId":"_MxxSrm6ReLFSnRAAAAD","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:37:07.802Z","level":"info","message":"新客户端连接","data":{"socketId":"oRpSO79EtXX_qeEDAAAF"}}
+{"timestamp":"2026-04-14T14:37:07.803Z","level":"info","message":"Socket连接认证成功","data":{"socketId":"oRpSO79EtXX_qeEDAAAF","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:37:07.907Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/gantt-data","statusCode":200,"duration":"2ms"}}
+{"timestamp":"2026-04-14T14:37:07.907Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:37:07 +0000] \"GET /api/gantt-data HTTP/1.1\" 200 17769 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:37:07.923Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T14:37:07.923Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:37:07 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:37:07.937Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T14:37:07.938Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:37:07 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:37:07.950Z","level":"info","message":"客户端断开连接","data":{"socketId":"oRpSO79EtXX_qeEDAAAF","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:37:07.988Z","level":"info","message":"新客户端连接","data":{"socketId":"QkKdw1LYTTDmJDyJAAAH"}}
+{"timestamp":"2026-04-14T14:37:07.989Z","level":"info","message":"Socket连接认证成功","data":{"socketId":"QkKdw1LYTTDmJDyJAAAH","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:37:08.089Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/gantt-data","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T14:37:08.090Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:37:08 +0000] \"GET /api/gantt-data HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:37:08.103Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T14:37:08.104Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:37:08 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:37:08.156Z","level":"info","message":"收到数据更新","data":{"socketId":"QkKdw1LYTTDmJDyJAAAH","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:37:17.529Z","level":"info","message":"收到数据更新","data":{"socketId":"QkKdw1LYTTDmJDyJAAAH","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:37:17.534Z","level":"info","message":"收到数据更新","data":{"socketId":"QkKdw1LYTTDmJDyJAAAH","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:37:19.628Z","level":"info","message":"收到数据更新","data":{"socketId":"QkKdw1LYTTDmJDyJAAAH","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:37:19.633Z","level":"info","message":"收到数据更新","data":{"socketId":"QkKdw1LYTTDmJDyJAAAH","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:37:28.622Z","level":"info","message":"收到数据更新","data":{"socketId":"QkKdw1LYTTDmJDyJAAAH","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:37:28.626Z","level":"info","message":"收到数据更新","data":{"socketId":"QkKdw1LYTTDmJDyJAAAH","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:37:47.289Z","level":"info","message":"收到数据更新","data":{"socketId":"QkKdw1LYTTDmJDyJAAAH","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:37:47.293Z","level":"info","message":"收到数据更新","data":{"socketId":"QkKdw1LYTTDmJDyJAAAH","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:43:08.390Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":200,"duration":"6ms"}}
+{"timestamp":"2026-04-14T14:43:08.391Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:43:08 +0000] \"GET /index.html HTTP/1.1\" 200 330373 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:43:08.397Z","level":"info","message":"客户端断开连接","data":{"socketId":"QkKdw1LYTTDmJDyJAAAH","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:43:08.430Z","level":"info","message":"新客户端连接","data":{"socketId":"NIwUMq26sdmjQDH0AAAJ"}}
+{"timestamp":"2026-04-14T14:43:08.431Z","level":"info","message":"Socket连接认证成功","data":{"socketId":"NIwUMq26sdmjQDH0AAAJ","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:43:08.531Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/gantt-data","statusCode":200,"duration":"2ms"}}
+{"timestamp":"2026-04-14T14:43:08.532Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:43:08 +0000] \"GET /api/gantt-data HTTP/1.1\" 200 17754 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:43:08.545Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T14:43:08.546Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:43:08 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:43:08.587Z","level":"info","message":"收到数据更新","data":{"socketId":"NIwUMq26sdmjQDH0AAAJ","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:43:08.712Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T14:43:08.713Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:43:08 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:43:08.719Z","level":"info","message":"客户端断开连接","data":{"socketId":"NIwUMq26sdmjQDH0AAAJ","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:43:08.740Z","level":"info","message":"新客户端连接","data":{"socketId":"3JzPdhAD3a0UK31WAAAL"}}
+{"timestamp":"2026-04-14T14:43:08.741Z","level":"info","message":"Socket连接认证成功","data":{"socketId":"3JzPdhAD3a0UK31WAAAL","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:43:08.843Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/gantt-data","statusCode":304,"duration":"3ms"}}
+{"timestamp":"2026-04-14T14:43:08.843Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:43:08 +0000] \"GET /api/gantt-data HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:43:08.855Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"0ms"}}
+{"timestamp":"2026-04-14T14:43:08.856Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:43:08 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:43:08.895Z","level":"info","message":"收到数据更新","data":{"socketId":"3JzPdhAD3a0UK31WAAAL","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:43:15.672Z","level":"info","message":"收到数据更新","data":{"socketId":"3JzPdhAD3a0UK31WAAAL","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:43:34.917Z","level":"info","message":"收到数据更新","data":{"socketId":"3JzPdhAD3a0UK31WAAAL","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:43:38.070Z","level":"info","message":"收到数据更新","data":{"socketId":"3JzPdhAD3a0UK31WAAAL","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:43:45.459Z","level":"info","message":"收到数据更新","data":{"socketId":"3JzPdhAD3a0UK31WAAAL","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:43:50.041Z","level":"info","message":"收到数据更新","data":{"socketId":"3JzPdhAD3a0UK31WAAAL","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:44:56.439Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":200,"duration":"5ms"}}
+{"timestamp":"2026-04-14T14:44:56.439Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:44:56 +0000] \"GET /index.html HTTP/1.1\" 200 330357 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:44:56.483Z","level":"info","message":"客户端断开连接","data":{"socketId":"3JzPdhAD3a0UK31WAAAL","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:44:56.512Z","level":"info","message":"新客户端连接","data":{"socketId":"qrhh0dWDEtIqCu7PAAAN"}}
+{"timestamp":"2026-04-14T14:44:56.513Z","level":"info","message":"Socket连接认证成功","data":{"socketId":"qrhh0dWDEtIqCu7PAAAN","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:44:56.616Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/gantt-data","statusCode":200,"duration":"2ms"}}
+{"timestamp":"2026-04-14T14:44:56.617Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:44:56 +0000] \"GET /api/gantt-data HTTP/1.1\" 200 17754 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:44:56.633Z","level":"info","message":"收到数据更新","data":{"socketId":"qrhh0dWDEtIqCu7PAAAN","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:44:56.637Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T14:44:56.637Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:44:56 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:45:04.316Z","level":"info","message":"收到数据更新","data":{"socketId":"qrhh0dWDEtIqCu7PAAAN","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:45:09.444Z","level":"info","message":"收到数据更新","data":{"socketId":"qrhh0dWDEtIqCu7PAAAN","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:45:12.413Z","level":"info","message":"收到数据更新","data":{"socketId":"qrhh0dWDEtIqCu7PAAAN","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:45:16.717Z","level":"info","message":"收到数据更新","data":{"socketId":"qrhh0dWDEtIqCu7PAAAN","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:46:33.722Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":200,"duration":"7ms"}}
+{"timestamp":"2026-04-14T14:46:33.723Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:46:33 +0000] \"GET /index.html HTTP/1.1\" 200 330254 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:46:33.774Z","level":"info","message":"客户端断开连接","data":{"socketId":"qrhh0dWDEtIqCu7PAAAN","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:46:33.799Z","level":"info","message":"新客户端连接","data":{"socketId":"6p_7wBDfKXicnQM8AAAP"}}
+{"timestamp":"2026-04-14T14:46:33.800Z","level":"info","message":"Socket连接认证成功","data":{"socketId":"6p_7wBDfKXicnQM8AAAP","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:46:33.906Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/gantt-data","statusCode":304,"duration":"2ms"}}
+{"timestamp":"2026-04-14T14:46:33.906Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:46:33 +0000] \"GET /api/gantt-data HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:46:33.916Z","level":"info","message":"收到数据更新","data":{"socketId":"6p_7wBDfKXicnQM8AAAP","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:46:33.920Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T14:46:33.921Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:46:33 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:46:33.981Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/index.html","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T14:46:33.982Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:46:33 +0000] \"GET /index.html HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:46:34.002Z","level":"info","message":"客户端断开连接","data":{"socketId":"6p_7wBDfKXicnQM8AAAP","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:46:34.026Z","level":"info","message":"新客户端连接","data":{"socketId":"zrh2gtIcTxmGEReDAAAR"}}
+{"timestamp":"2026-04-14T14:46:34.027Z","level":"info","message":"Socket连接认证成功","data":{"socketId":"zrh2gtIcTxmGEReDAAAR","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:46:34.134Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/gantt-data","statusCode":304,"duration":"1ms"}}
+{"timestamp":"2026-04-14T14:46:34.135Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:46:34 +0000] \"GET /api/gantt-data HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:46:34.147Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/backups","statusCode":404,"duration":"1ms"}}
+{"timestamp":"2026-04-14T14:46:34.147Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:46:34 +0000] \"GET /api/backups HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:46:34.182Z","level":"info","message":"收到数据更新","data":{"socketId":"zrh2gtIcTxmGEReDAAAR","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:46:41.117Z","level":"info","message":"收到数据更新","data":{"socketId":"zrh2gtIcTxmGEReDAAAR","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:46:50.916Z","level":"info","message":"收到数据更新","data":{"socketId":"zrh2gtIcTxmGEReDAAAR","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:46:53.033Z","level":"info","message":"收到数据更新","data":{"socketId":"zrh2gtIcTxmGEReDAAAR","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:46:54.861Z","level":"info","message":"收到数据更新","data":{"socketId":"zrh2gtIcTxmGEReDAAAR","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:47:01.110Z","level":"info","message":"收到数据更新","data":{"socketId":"zrh2gtIcTxmGEReDAAAR","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:47:04.454Z","level":"info","message":"收到数据更新","data":{"socketId":"zrh2gtIcTxmGEReDAAAR","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:47:08.353Z","level":"info","message":"收到数据更新","data":{"socketId":"zrh2gtIcTxmGEReDAAAR","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:47:11.752Z","level":"info","message":"收到数据更新","data":{"socketId":"zrh2gtIcTxmGEReDAAAR","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:47:14.789Z","level":"info","message":"收到数据更新","data":{"socketId":"zrh2gtIcTxmGEReDAAAR","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:47:20.729Z","level":"info","message":"收到数据更新","data":{"socketId":"zrh2gtIcTxmGEReDAAAR","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:47:22.706Z","level":"info","message":"收到数据更新","data":{"socketId":"zrh2gtIcTxmGEReDAAAR","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:47:30.355Z","level":"info","message":"收到数据更新","data":{"socketId":"zrh2gtIcTxmGEReDAAAR","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:47:31.965Z","level":"info","message":"收到数据更新","data":{"socketId":"zrh2gtIcTxmGEReDAAAR","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:47:38.726Z","level":"info","message":"收到数据更新","data":{"socketId":"zrh2gtIcTxmGEReDAAAR","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:47:43.853Z","level":"info","message":"收到数据更新","data":{"socketId":"zrh2gtIcTxmGEReDAAAR","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:47:57.134Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/user-management.html","statusCode":200,"duration":"5ms"}}
+{"timestamp":"2026-04-14T14:47:57.134Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:47:57 +0000] \"GET /user-management.html HTTP/1.1\" 200 27352 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:47:57.154Z","level":"info","message":"Authentication successful","data":{"userId":"1776091109345","username":"admin"}}
+{"timestamp":"2026-04-14T14:47:57.155Z","level":"info","message":"Permission granted","data":{"userId":"1776091109345","role":"admin","action":"/"}}
+{"timestamp":"2026-04-14T14:47:57.156Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/users","statusCode":200,"duration":"3ms"}}
+{"timestamp":"2026-04-14T14:47:57.156Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:47:57 +0000] \"GET /api/users HTTP/1.1\" 200 490 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}
+{"timestamp":"2026-04-14T14:47:57.199Z","level":"info","message":"客户端断开连接","data":{"socketId":"zrh2gtIcTxmGEReDAAAR","userId":"1776091109345"}}
+{"timestamp":"2026-04-14T14:48:00.209Z","level":"info","message":"Authentication successful","data":{"userId":"1776091109345","username":"admin"}}
+{"timestamp":"2026-04-14T14:48:00.210Z","level":"info","message":"Permission granted","data":{"userId":"1776091109345","role":"admin","action":"/1776161114294"}}
+{"timestamp":"2026-04-14T14:48:00.213Z","level":"info","message":"Request completed","data":{"method":"GET","path":"/api/users/1776161114294","statusCode":200,"duration":"5ms"}}
+{"timestamp":"2026-04-14T14:48:00.213Z","level":"info","message":"::ffff:192.168.164.128 - - [14/Apr/2026:14:48:00 +0000] \"GET /api/users/1776161114294 HTTP/1.1\" 200 167 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0\"","data":null}

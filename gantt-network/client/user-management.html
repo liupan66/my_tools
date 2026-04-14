@@ -392,7 +392,7 @@
                 </div>
                 <div class="form-group">
                     <label for="edit-password">密码（留空不修改）</label>
-                    <input type="password" id="edit-password" name="password">
+                    <input type="text" id="edit-password" name="password">
                 </div>
                 <div class="form-group">
                     <label for="edit-role">角色</label>
@@ -465,8 +465,7 @@
             
             currentUser = JSON.parse(user);
             
-            // 检查是否有权限访问用户管理
-            if (currentUser.role !== 'admin' && currentUser.role !== 'manager') {
+            if (currentUser.role !== 'admin') {
                 alert('没有权限访问用户管理');
                 window.location.href = '/index.html';
                 return false;
