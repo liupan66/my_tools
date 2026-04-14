@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单甘特图测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .executor {
+            background-color: #f0f0f0;
+            font-weight: bold;
+            width: 120px;
+        }
+        .date-cell {
+            width: 40px;
+            min-width: 40px;
+        }
+        .gantt-bar-container {
+            position: relative;
+            min-height: 80px;
+            background-color: #fafafa;
+        }
+        .gantt-bar {
+            position: absolute;
+            height: 30px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            top: 5px;
+        }
+        h2 {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>简单甘特图测试</h1>
+    <h2 id="status">正在加载数据...</h2>
+    
+    <table class="gantt-table" id="ganttTable">
+        <thead>
+            <tr id="dateHeader">
+                <th class="executor">执行人</th>
+            </tr>
+        </thead>
+        <tbody id="ganttBody"></tbody>
+    </table>
+
+    <script>
+        let executors = [];
+        let startDate = new Date('2026-01-01');
+        let endDate = new Date('2026-06-30');
+        
+        async function loadAndRender() {
+            const statusEl = document.getElementById('status');
+            
+            try {
+                statusEl.textContent = '步骤1: 正在从API获取数据...';
+                
+                const response = await fetch('/api/gantt-data');
+                const result = await response.json();
+                
+                if (!result.success || !result.data) {
+                    throw new Error('API返回数据格式错误');
+                }
+                
+                const data = result.data;
+                
+                statusEl.textContent = '步骤2: 数据获取成功！正在处理...';
+                console.log('原始数据:', data);
+                
+                executors = data.executors || [];
+                startDate = data.startDate ? new Date(data.startDate) : startDate;
+                endDate = data.endDate ? new Date(data.endDate) : endDate;
+                
+                statusEl.textContent = `步骤3: 找到 ${executors.length} 个执行人。正在生成甘特图...`;
+                
+                generateDateHeader();
+                generateGantt();
+                
+                statusEl.textContent = `✓ 成功！甘特图已生成，包含 ${countTasks()} 个任务`;
+                statusEl.style.color = 'green';
+                
+            } catch (error) {
+                statusEl.textContent = '✗ 错误: ' + error.message;
+                statusEl.style.color = 'red';
+                console.error('错误:', error);
+            }
+        }
+        
+        function countTasks() {
+            let count = 0;
+            executors.forEach(ex => {
+                if (ex.tasks) {
+                    count += ex.tasks.length;
+                }
+            });
+            return count;
+        }
+        
+        function generateDateHeader() {
+            const dateHeader = document.getElementById('dateHeader');
+            
+            const executorTh = document.createElement('th');
+            executorTh.className = 'executor';
+            executorTh.textContent = '执行人';
+            dateHeader.appendChild(executorTh);
+            
+            for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+                const dateCell = document.createElement('th');
+                dateCell.className = 'date-cell';
+                dateCell.textContent = `${d.getMonth() + 1}/${d.getDate()}`;
+                dateHeader.appendChild(dateCell);
+            }
+            
+            console.log('日期表头已生成，总天数:', (endDate - startDate) / (1000 * 60 * 60 * 24) + 1);
+        }
+        
+        function generateGantt() {
+            const ganttBody = document.getElementById('ganttBody');
+            
+            const currentStartDate = new Date(startDate);
+            currentStartDate.setHours(0, 0, 0, 0);
+            
+            const currentEndDate = new Date(endDate);
+            currentEndDate.setHours(0, 0, 0, 0);
+            
+            const totalDays = (currentEndDate - currentStartDate) / (1000 * 60 * 60 * 24) + 1;
+            
+            console.log(`开始生成甘特图，总天数: ${totalDays}, 执行人数: ${executors.length}`);
+            
+            executors.forEach((executor, index) => {
+                console.log(`处理执行人 ${index + 1}: ${executor.executor}, 任务数: ${executor.tasks ? executor.tasks.length : 0}`);
+                
+                const row = document.createElement('tr');
+                
+                const executorCell = document.createElement('td');
+                executorCell.className = 'executor';
+                executorCell.textContent = executor.executor;
+                row.appendChild(executorCell);
+                
+                const barContainer = document.createElement('td');
+                barContainer.colSpan = totalDays;
+                barContainer.className = 'gantt-bar-container';
+                
+                if (executor.tasks && executor.tasks.length > 0) {
+                    executor.tasks.forEach(task => {
+                        if (task.phases && task.phases.length > 0) {
+                            task.phases.forEach(phase => {
+                                const taskStart = new Date(phase.startDate);
+                                taskStart.setHours(0, 0, 0, 0);
+                                
+                                const taskEnd = new Date(phase.endDate);
+                                taskEnd.setHours(0, 0, 0, 0);
+                                
+                                const startOffsetDays = Math.max(0, (taskStart - currentStartDate) / (1000 * 60 * 60 * 24));
+                                const endOffsetDays = Math.min(totalDays, (taskEnd - currentStartDate) / (1000 * 60 * 60 * 24) + 1);
+                                const durationDays = endOffsetDays - startOffsetDays;
+                                
+                                const leftPercent = (startOffsetDays / totalDays) * 100;
+                                const widthPercent = (durationDays / totalDays) * 100;
+                                
+                                console.log(`  创建甘特条: ${task.name} - ${phase.type}, 左侧: ${leftPercent.toFixed(1)}%, 宽度: ${widthPercent.toFixed(1)}%`);
+                                
+                                const bar = document.createElement('div');
+                                bar.className = 'gantt-bar';
+                                bar.style.left = `${leftPercent}%`;
+                                bar.style.width = `${widthPercent}%`;
+                                bar.style.backgroundColor = getColor(phase.type);
+                                bar.textContent = task.name;
+                                barContainer.appendChild(bar);
+                            });
+                        }
+                    });
+                }
+                
+                row.appendChild(barContainer);
+                ganttBody.appendChild(row);
+            });
+            
+            console.log('甘特图生成完成');
+        }
+        
+        function getColor(type) {
+            const colors = {
+                '计划': '#3498db',
+                '执行': '#2ecc71',
+                '检查': '#f39c12',
+                '收尾': '#e74c3c'
+            };
+            return colors[type] || '#95a5a6';
+        }
+        
+        window.onload = loadAndRender;
+    </script>
+</body>
+</html>

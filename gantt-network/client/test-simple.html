@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>测试页面</h1>
+    <p>如果您看到这个页面，说明HTML和JavaScript可以正常工作。</p>
+    <div id="test"></div>
+    
+    <script>
+        console.log('测试页面加载成功');
+        document.getElementById('test').innerHTML = '<p>JavaScript执行成功！</p>';
+        alert('JavaScript执行成功！');
+    </script>
+</body>
+</html>

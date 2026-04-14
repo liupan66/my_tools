@@ -1,0 +1,41 @@
+[
+  {
+    "id": "1776091109345",
+    "username": "admin",
+    "password": "admin",
+    "email": "admin@example.com",
+    "role": "admin",
+    "permissions": [
+      "read",
+      "write",
+      "delete",
+      "admin"
+    ],
+    "createdAt": "2026-04-13T14:38:29.345Z",
+    "updatedAt": "2026-04-14T10:04:48.981Z"
+  },
+  {
+    "id": "1776160366092",
+    "username": "liaokaiwen",
+    "password": "123",
+    "role": "admin",
+    "permissions": [
+      "read",
+      "write",
+      "delete"
+    ],
+    "createdAt": "2026-04-14T09:52:46.092Z",
+    "updatedAt": "2026-04-14T10:04:42.531Z"
+  },
+  {
+    "id": "1776161114294",
+    "username": "huangxianan",
+    "password": "123456",
+    "role": "user",
+    "permissions": [
+      "read"
+    ],
+    "createdAt": "2026-04-14T10:05:14.294Z",
+    "updatedAt": "2026-04-14T10:05:14.294Z"
+  }
+]

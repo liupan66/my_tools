@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>甘特图调试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .debug-info {
+            background: #f0f0f0;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>甘特图调试页面</h1>
+    <div id="debugInfo" class="debug-info">正在加载数据...</div>
+    
+    <script>
+        async function debugGantt() {
+            const debugDiv = document.getElementById('debugInfo');
+            
+            try {
+                debugDiv.innerHTML = '<p>步骤1: 正在从服务器获取数据...</p>';
+                
+                const response = await fetch('/api/gantt-data');
+                const result = await response.json();
+                
+                debugDiv.innerHTML += `<p class="success">✓ API请求成功</p>`;
+                debugDiv.innerHTML += `<p>步骤2: 检查数据格式...</p>`;
+                
+                if (!result.success) {
+                    throw new Error('API返回失败: ' + result.message);
+                }
+                
+                if (!result.data) {
+                    throw new Error('API返回的数据中没有data字段');
+                }
+                
+                const data = result.data;
+                
+                debugDiv.innerHTML += `<p class="success">✓ 数据格式正确</p>`;
+                debugDiv.innerHTML += `<p>步骤3: 检查executors字段...</p>`;
+                
+                if (!Array.isArray(data.executors)) {
+                    throw new Error('executors不是数组');
+                }
+                
+                debugDiv.innerHTML += `<p class="success">✓ executors是数组，长度: ${data.executors.length}</p>`;
+                debugDiv.innerHTML += `<p>步骤4: 统计任务数量...</p>`;
+                
+                let totalTasks = 0;
+                let executorsWithTasks = 0;
+                
+                data.executors.forEach((executor, index) => {
+                    const taskCount = Array.isArray(executor.tasks) ? executor.tasks.length : 0;
+                    debugDiv.innerHTML += `<p>执行人${index + 1}: ${executor.executor} - 任务数: ${taskCount}</p>`;
+                    
+                    if (taskCount > 0) {
+                        executorsWithTasks++;
+                        totalTasks += taskCount;
+                        
+                        executor.tasks.forEach((task, taskIndex) => {
+                            const phaseCount = Array.isArray(task.phases) ? task.phases.length : 0;
+                            debugDiv.innerHTML += `<p>&nbsp;&nbsp;任务${taskIndex + 1}: ${task.name} - 阶段数: ${phaseCount}</p>`;
+                        });
+                    }
+                });
+                
+                debugDiv.innerHTML += `<p class="success">✓ 总计: ${executorsWithTasks}个执行人有任务，共${totalTasks}个任务</p>`;
+                debugDiv.innerHTML += `<p>步骤5: 检查日期范围...</p>`;
+                
+                debugDiv.innerHTML += `<p>startDate: ${data.startDate}</p>`;
+                debugDiv.innerHTML += `<p>endDate: ${data.endDate}</p>`;
+                
+                debugDiv.innerHTML += `<p class="success">✓ 所有检查通过！数据应该能够正常显示。</p>`;
+                debugDiv.innerHTML += `<p>如果甘特图仍然空白，问题可能出在：</p>`;
+                debugDiv.innerHTML += `<ul>`;
+                debugDiv.innerHTML += `<li>JavaScript执行错误（请查看控制台）</li>`;
+                debugDiv.innerHTML += `<li>CSS样式问题导致内容不可见</li>`;
+                debugDiv.innerHTML += `<li>DOM元素未正确创建</li>`;
+                debugDiv.innerHTML += `</ul>`;
+                
+            } catch (error) {
+                debugDiv.innerHTML += `<p class="error">✗ 错误: ${error.message}</p>`;
+                console.error('调试错误:', error);
+            }
+        }
+        
+        // 页面加载后立即执行
+        debugGantt();
+    </script>
+</body>
+</html>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>甘特图</title>
     <!-- SheetJS库用于Excel导出和导入 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script> -->
     <!-- Socket.io客户端 -->
     <script src="/socket.io/socket.io.js"></script>
     <style>
@@ -29,7 +29,8 @@
         
         .container {
             width: 100%;
-            height: 100vh;
+            height: auto;
+            min-height: 100vh;
             background-color: white;
             box-shadow: 0 0 15px rgba(0,0,0,0.08);
             display: flex;
@@ -1299,11 +1300,60 @@
         }
     </style>
 </head>
-<body>
+<body onload="initApp();">
     <div class="container" id="ganttContainer">
         <div class="header">
-            <h1>甘特图</h1>
+            <div class="header-left">
+                <h1>甘特图</h1>
+            </div>
+            <div class="header-right">
+                <button id="userManagementBtn" class="header-btn" style="display: none;">用户管理</button>
+                <button id="logoutBtn" class="header-btn">退出登录</button>
+                <span id="userInfo" class="user-info"></span>
+            </div>
         </div>
+        
+        <style>
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+                background: white;
+                border-bottom: 1px solid #ddd;
+                border-radius: 8px 8px 0 0;
+            }
+            
+            .header-left h1 {
+                margin: 0;
+                color: #333;
+            }
+            
+            .header-right {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .header-btn {
+                padding: 8px 16px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                background: white;
+                cursor: pointer;
+                font-size: 14px;
+                transition: all 0.3s ease;
+            }
+            
+            .header-btn:hover {
+                background: #f0f0f0;
+            }
+            
+            .user-info {
+                font-size: 14px;
+                color: #666;
+            }
+        </style>
         
         <!-- 任务类型图例 -->
         <div class="task-type-legend" id="taskTypeLegend">
@@ -1470,7 +1520,7 @@
                                     <tr id="dateHeader">
                                         <th class="executor">任务执行人</th>
                                         <!-- 日期会通过JavaScript动态生成 -->
-
+                                    </tr>
                                 </thead>
                                 <tbody id="ganttBody">
                                     <!-- 任务行会通过JavaScript动态生成 -->
@@ -1778,15 +1828,23 @@
         }
         
         function buildStateFromData(d) {
+            const executors = Array.isArray(d.executors) ? d.executors.map(e => ({
+                ...e,
+                tasks: Array.isArray(e.tasks) ? e.tasks : []
+            })) : [];
+            const executorList = ['张三', '李四', '王五'];
             return {
-                executors: Array.isArray(d.executors) ? d.executors : [],
+                executors: executors,
                 colorConfig: d.colorConfig && typeof d.colorConfig === 'object' ? d.colorConfig : defaultColorConfig(),
                 holidays: Array.isArray(d.holidays) && d.holidays.length ? d.holidays : getDefaultHolidays(),
                 saturdayWorkday: !!d.saturdayWorkday,
                 sundayWorkday: !!d.sundayWorkday,
-                projectList: Array.isArray(d.projectList) ? d.projectList : [],
-                executorList: Array.isArray(d.executorList) ? d.executorList : [],
-                projectColorConfig: d.projectColorConfig && typeof d.projectColorConfig === 'object' ? d.projectColorConfig : {},
+                projectList: Array.isArray(d.projectList) ? d.projectList : ['项目A', '项目B'],
+                executorList: executorList,
+                projectColorConfig: d.projectColorConfig && typeof d.projectColorConfig === 'object' ? d.projectColorConfig : {
+                    '项目A': '#3498db',
+                    '项目B': '#2ecc71'
+                },
                 startDate: d.startDate ? new Date(d.startDate) : new Date('2026-01-01'),
                 endDate: d.endDate ? new Date(d.endDate) : new Date('2026-06-30'),
                 hideProjectBarWhenSingleProject: d.hideProjectBarWhenSingleProject !== false
@@ -1796,14 +1854,30 @@
         // 从服务器加载数据
         async function loadData() {
             try {
-                const response = await fetch('/api/data');
+                // 注释掉登录检查，直接加载数据
+                // const token = localStorage.getItem('authToken');
+                const headers = { 'Content-Type': 'application/json' };
+                // if (token) {
+                //     headers['Authorization'] = `Bearer ${token}`;
+                // }
+                console.log('开始从服务器获取数据');
+                const response = await fetch('/api/gantt-data', { headers });
+                console.log('服务器响应状态:', response.status);
                 if (response.ok) {
                     const data = await response.json();
-                    if (data && data.executors) {
+                    console.log('服务器返回的数据:', data);
+                    if (data && data.data) {
                         console.log('从服务器加载数据成功');
-                        return buildStateFromData(data);
+                        const state = buildStateFromData(data.data);
+                        console.log('构建的状态:', state);
+                        return state;
                     }
-                }
+                } 
+                // else if (response.status === 401) {
+                //     console.log('未认证，跳转到登录');
+                //     window.location.href = '/login.html';
+                //     return null;
+                // }
             } catch (error) {
                 console.error('从服务器加载数据失败:', error);
             }
@@ -1817,7 +1891,7 @@
                     if (result.success && result.data) {
                         try {
                             const s = JSON.parse(result.data);
-                            if (s && s.v === GANTT_STATE_VERSION && Array.isArray(s.executors)) {
+                            if (s) {
                                 console.log('从本地文件加载成功');
                                 return buildStateFromData(s);
                             }
@@ -1831,7 +1905,7 @@
                     if (unifiedRaw) {
                         try {
                             const s = JSON.parse(unifiedRaw);
-                            if (s && s.v === GANTT_STATE_VERSION && Array.isArray(s.executors)) {
+                            if (s) {
                                 console.log('从 localStorage 加载成功');
                                 return buildStateFromData(s);
                             }
@@ -1845,58 +1919,58 @@
             }
             
             // 默认数据
-                console.log('使用默认数据');
-                const projectColorConfig = {
-                    '项目A': '#3498db',
-                    '项目B': '#2ecc71'
-                };
-                const defaultData = {
-                    executors: [
-                        {
-                            executor: '张三',
-                            tasks: [
-                                {
-                                    id: 1, 
-                                    name: '任务1', 
-                                    project: '项目A',
-                                    phases: [
-                                        {type: '计划', startDate: '2026-04-01', endDate: '2026-04-05'},
-                                        {type: '执行', startDate: '2026-04-06', endDate: '2026-04-10'},
-                                        {type: '检查', startDate: '2026-04-11', endDate: '2026-04-15'}
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            executor: '李四',
-                            tasks: [
-                                {
-                                    id: 2, 
-                                    name: '任务2', 
-                                    project: '项目B',
-                                    phases: [
-                                        {type: '计划', startDate: '2026-04-03', endDate: '2026-04-07'},
-                                        {type: '执行', startDate: '2026-04-08', endDate: '2026-04-15'},
-                                        {type: '收尾', startDate: '2026-04-16', endDate: '2026-04-20'}
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            executor: '王五',
-                            tasks: [
-                                {
-                                    id: 3, 
-                                    name: '任务3', 
-                                    project: '项目A',
-                                    phases: [
-                                        {type: '执行', startDate: '2026-04-12', endDate: '2026-04-20'},
-                                        {type: '检查', startDate: '2026-04-21', endDate: '2026-04-25'}
-                                    ]
-                                }
-                            ]
-                        }
-                    ],
+            console.log('使用默认数据');
+            const projectColorConfig = {
+                '项目A': '#3498db',
+                '项目B': '#2ecc71'
+            };
+            const defaultData = {
+                executors: [
+                    {
+                        executor: '张三',
+                        tasks: [
+                            {
+                                id: 1, 
+                                name: '任务1', 
+                                project: '项目A',
+                                phases: [
+                                    {type: '计划', startDate: '2026-04-01', endDate: '2026-04-05'},
+                                    {type: '执行', startDate: '2026-04-06', endDate: '2026-04-10'},
+                                    {type: '检查', startDate: '2026-04-11', endDate: '2026-04-15'}
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        executor: '李四',
+                        tasks: [
+                            {
+                                id: 2, 
+                                name: '任务2', 
+                                project: '项目B',
+                                phases: [
+                                    {type: '计划', startDate: '2026-04-03', endDate: '2026-04-07'},
+                                    {type: '执行', startDate: '2026-04-08', endDate: '2026-04-15'},
+                                    {type: '收尾', startDate: '2026-04-16', endDate: '2026-04-20'}
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        executor: '王五',
+                        tasks: [
+                            {
+                                id: 3, 
+                                name: '任务3', 
+                                project: '项目A',
+                                phases: [
+                                    {type: '执行', startDate: '2026-04-12', endDate: '2026-04-20'},
+                                    {type: '检查', startDate: '2026-04-21', endDate: '2026-04-25'}
+                                ]
+                            }
+                        ]
+                    }
+                ],
                 colorConfig: defaultColorConfig(),
                 holidays: getDefaultHolidays(),
                 saturdayWorkday: false,
@@ -1951,6 +2025,13 @@
         // 保存数据到服务器
         async function saveData() {
             console.log('saveData函数被调用');
+            
+            // 检查权限
+            if (!hasEditPermission()) {
+                console.warn('无权限保存数据');
+                return;
+            }
+            
             try {
                 const sd = startDate instanceof Date ? startDate : new Date(startDate);
                 const ed = endDate instanceof Date ? endDate : new Date(endDate);
@@ -2158,7 +2239,21 @@
         const visibleDays = 180; // 可见天数
         
         // 添加Socket.io客户端
-        const socket = io();
+        // 注释掉登录检查，直接连接Socket.io
+        // const token = localStorage.getItem('authToken');
+        const socket = io({
+            auth: {
+                // token: token
+            }
+        });
+        
+        socket.on('error', (error) => {
+            console.error('Socket错误:', error);
+            // if (error.message === 'Authentication required' || error.message === 'Invalid token') {
+            //     localStorage.removeItem('authToken');
+            //     window.location.href = '/login.html';
+            // }
+        });
         
         // 接收服务器数据更新
         socket.on('data', (data) => {
@@ -2216,6 +2311,11 @@
                 const backups = await response.json();
                 const backupList = document.getElementById('backupList');
                 
+                if (!backupList) {
+                    console.warn('backupList element not found');
+                    return;
+                }
+                
                 if (backups.length === 0) {
                     backupList.innerHTML = '<p style="color: #999; text-align: center;">暂无备份</p>';
                     return;
@@ -2243,7 +2343,10 @@
                 backupList.innerHTML = backupHTML;
             } catch (error) {
                 console.error('加载备份列表失败:', error);
-                document.getElementById('backupList').innerHTML = '<p style="color: #e74c3c; text-align: center;">加载备份列表失败</p>';
+                const backupList = document.getElementById('backupList');
+                if (backupList) {
+                    backupList.innerHTML = '<p style="color: #e74c3c; text-align: center;">加载备份列表失败</p>';
+                }
             }
         }
 
@@ -2300,21 +2403,63 @@
 
         // 初始化应用
         async function initApp() {
-            try {
-                const initialData = await loadData();
-                colorConfig = initialData.colorConfig;
-                executors = initialData.executors || [];
-                holidays = initialData.holidays || [];
-                saturdayWorkday = initialData.saturdayWorkday || false;
-                sundayWorkday = initialData.sundayWorkday || false;
-                projectList = initialData.projectList || [];
-                executorList = initialData.executorList || [];
-                projectColorConfig = initialData.projectColorConfig || {};
-                hideProjectBarWhenSingleProject = initialData.hideProjectBarWhenSingleProject !== false;
-                startDate = initialData.startDate || new Date('2026-01-01');
-                endDate = initialData.endDate || new Date('2026-06-30');
-                
-                // 初始化UI
+            colorConfig = defaultColorConfig();
+            holidays = getDefaultHolidays();
+            projectList = ['项目A', '项目B'];
+            executorList = ['张三', '李四', '王五'];
+            projectColorConfig = {
+                '项目A': '#3498db',
+                '项目B': '#2ecc71'
+            };
+            executors = [
+                {
+                    executor: '张三',
+                    tasks: [
+                        {
+                            id: 1, 
+                            name: '任务1', 
+                            project: '项目A',
+                            phases: [
+                                {type: '计划', startDate: '2026-04-01', endDate: '2026-04-05'},
+                                {type: '执行', startDate: '2026-04-06', endDate: '2026-04-10'},
+                                {type: '检查', startDate: '2026-04-11', endDate: '2026-04-15'}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    executor: '李四',
+                    tasks: [
+                        {
+                            id: 2, 
+                            name: '任务2', 
+                            project: '项目B',
+                            phases: [
+                                {type: '计划', startDate: '2026-04-03', endDate: '2026-04-07'},
+                                {type: '执行', startDate: '2026-04-08', endDate: '2026-04-15'},
+                                {type: '收尾', startDate: '2026-04-16', endDate: '2026-04-20'}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    executor: '王五',
+                    tasks: [
+                        {
+                            id: 3, 
+                            name: '任务3', 
+                            project: '项目A',
+                            phases: [
+                                {type: '执行', startDate: '2026-04-12', endDate: '2026-04-20'},
+                                {type: '检查', startDate: '2026-04-21', endDate: '2026-04-25'}
+                            ]
+                        }
+                    ]
+                }
+            ];
+            startDate = new Date('2026-01-01');
+            endDate = new Date('2026-06-30');
+
             init();
             generateTaskTypeLegend();
             
@@ -2337,68 +2482,7 @@
             
             // 加载备份列表
             loadBackupList();
-            } catch (error) {
-                console.error('初始化应用失败:', error);
-                // 使用默认数据
-                colorConfig = defaultColorConfig();
-                holidays = getDefaultHolidays();
-                projectList = ['项目A', '项目B'];
-                executorList = ['张三', '李四', '王五'];
-                projectColorConfig = {
-                    '项目A': '#3498db',
-                    '项目B': '#2ecc71'
-                };
-                executors = [
-                    {
-                        executor: '张三',
-                        tasks: [
-                            {
-                                id: 1, 
-                                name: '任务1', 
-                                project: '项目A',
-                                phases: [
-                                    {type: '计划', startDate: '2026-04-01', endDate: '2026-04-05'},
-                                    {type: '执行', startDate: '2026-04-06', endDate: '2026-04-10'},
-                                    {type: '检查', startDate: '2026-04-11', endDate: '2026-04-15'}
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        executor: '李四',
-                        tasks: [
-                            {
-                                id: 2, 
-                                name: '任务2', 
-                                project: '项目B',
-                                phases: [
-                                    {type: '计划', startDate: '2026-04-03', endDate: '2026-04-07'},
-                                    {type: '执行', startDate: '2026-04-08', endDate: '2026-04-15'},
-                                    {type: '收尾', startDate: '2026-04-16', endDate: '2026-04-20'}
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        executor: '王五',
-                        tasks: [
-                            {
-                                id: 3, 
-                                name: '任务3', 
-                                project: '项目A',
-                                phases: [
-                                    {type: '执行', startDate: '2026-04-12', endDate: '2026-04-20'},
-                                    {type: '检查', startDate: '2026-04-21', endDate: '2026-04-25'}
-                                ]
-                            }
-                        ]
-                    }
-                ];
-                
-                // 初始化UI
-                init();
-                generateTaskTypeLegend();
-            }
+            console.log('初始化应用完成');
         }
         
         // 生成日期表头
@@ -2776,7 +2860,7 @@
         // 过滤执行人和任务
         function getFilteredExecutors() {
             // 先获取所有执行，不管是否有任务
-            const allExecutors = executors.map(executor => {
+            let allExecutors = executors.map(executor => {
                 // 过滤任务
                 const filteredTasks = executor.tasks.map(task => {
                     // 项目筛选（支持多选）
@@ -2871,14 +2955,16 @@
                     ...executor,
                     tasks: filteredTasks
                 };
-            }).filter(executor => {
-                // 执行人筛选（支持多选）
+            });
+            
+            // 执行人筛选（支持多选）
+            allExecutors = allExecutors.filter(executor => {
                 if (filterConditions.executors.length > 0 && !filterConditions.executors.includes(executor.executor)) {
                     return false;
                 }
                 
-                // 只有当执行人有符合条件的任务时才返回
-                return executor.tasks.length > 0;
+                // 即使没有任务，也返回执行人，这样用户可以看到执行人和"添加任务"按钮
+                return true;
             });
             
             // 确保执行的顺序与executorList中的顺序一致
@@ -2887,16 +2973,16 @@
                 const executor = allExecutors.find(e => e.executor === executorName);
                 if (executor) {
                     orderedExecutors.push(executor);
+                } else {
+                    // 如果执行人不在allExecutors中，创建一个新的执行对象
+                    orderedExecutors.push({
+                        executor: executorName,
+                        tasks: []
+                    });
                 }
             });
             
-            // 不再添加不在executorList中的执行人，这样就不会在甘特图最后面新增一行
-            // allExecutors.forEach(executor => {
-            //     if (!orderedExecutors.find(e => e.executor === executor.executor)) {
-            //         orderedExecutors.push(executor);
-            //     }
-            // });
-            
+            // 如果没有执行人，返回空数组
             return orderedExecutors;
         }
         
@@ -3267,18 +3353,17 @@
         // 生成甘特图
         function generateGantt() {
             const ganttBody = document.getElementById('ganttBody');
+            if (!ganttBody) return;
             const fragment = document.createDocumentFragment();
-            
-            // 确保使用正确的日期范围，只包含日期部分
+
             const currentStartDate = new Date(startDate);
             currentStartDate.setHours(0, 0, 0, 0);
-            
+
             const currentEndDate = new Date(endDate);
             currentEndDate.setHours(0, 0, 0, 0);
-            
-            // 计算总天数
+
             const totalDays = (currentEndDate - currentStartDate) / (1000 * 60 * 60 * 24) + 1;
-            
+
             // 获取过滤后的执行人和任务
             const filteredExecutors = getFilteredExecutors();
             
@@ -3550,19 +3635,22 @@
                 executorRow.appendChild(barContainerCell);
                 fragment.appendChild(executorRow);
             });
-            
 
-            
             // 一次性更新DOM
             ganttBody.innerHTML = '';
             ganttBody.appendChild(fragment);
-            
-            // 重新绑定甘特图执行人行拖动排序
+
             bindGanttExecutorDragReorder();
         }
         
         // 编辑任务
         function editTask(id, executorName) {
+            // 检查权限
+            if (!hasEditPermission()) {
+                alert('无权限编辑任务');
+                return;
+            }
+            
             // 找到对应的执行人和任务
             let task = null;
             let executor = null;
@@ -3584,6 +3672,12 @@
         
         // 创建新任务
         function createNewTask(executorName) {
+            // 检查权限
+            if (!hasEditPermission()) {
+                alert('无权限创建任务');
+                return;
+            }
+            
             // 创建新任务对象
             const newTask = {
                 id: 'task_' + Date.now(),
@@ -4724,6 +4818,12 @@
         
         // 删除任务
         function deleteTask(id, executorName) {
+            // 检查权限
+            if (!hasEditPermission()) {
+                alert('无权限删除任务');
+                return;
+            }
+            
             // 找到对应的执行人和任务并删除
             let taskDeleted = false;
             for (const executor of executors) {
@@ -4925,26 +5025,32 @@
         
         // 标签切换
         document.querySelectorAll('.tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                const tabId = this.dataset.tab;
-                
-                // 移除所有活动标签
-                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                
-                // 激活当前标签
-                this.classList.add('active');
-                document.getElementById(tabId).classList.add('active');
-                
-                // 如果切换到设置标签，重新绑定事件
-                if (tabId === 'settings') {
-                    setTimeout(rebindColorPickers, 100);
-                    renderProjectList();
-                    renderExecutorList();
-                    initHolidayList();
-                }
+                tab.addEventListener('click', function() {
+                    const tabId = this.dataset.tab;
+                    
+                    // 检查设置权限
+                    if (tabId === 'settings' && !hasSettingsPermission()) {
+                        alert('无权限访问设置界面');
+                        return;
+                    }
+                    
+                    // 移除所有活动标签
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    
+                    // 激活当前标签
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                    
+                    // 如果切换到设置标签，重新绑定事件
+                    if (tabId === 'settings') {
+                        setTimeout(rebindColorPickers, 100);
+                        renderProjectList();
+                        renderExecutorList();
+                        initHolidayList();
+                    }
+                });
             });
-        });
         
         // 设置页面导航切换
         document.querySelectorAll('.settings-sidebar-item').forEach(item => {
@@ -5291,6 +5397,9 @@
             const itemSelector = options.itemSelector || '.color-item';
             
             container.addEventListener('mousedown', function(e) {
+                // 检查用户是否有编辑权限
+                if (!hasEditPermission()) return;
+                
                 if (!e.target.closest(handleSelector)) return;
                 
                 const item = e.target.closest(itemSelector);
@@ -5415,6 +5524,9 @@
             const itemSelector = 'tr';
             
             ganttBody.addEventListener('mousedown', function(e) {
+                // 检查用户是否有编辑权限
+                if (!hasEditPermission()) return;
+                
                 if (!e.target.closest(handleSelector)) return;
                 
                 const item = e.target.closest(itemSelector);
@@ -5583,6 +5695,12 @@
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     try {
+                        // 检查XLSX是否加载
+                        if (!window.XLSX) {
+                            alert('SheetJS库加载失败，请刷新页面重试');
+                            return;
+                        }
+                        
                         // 读取Excel文件
                         const data = new Uint8Array(e.target.result);
                         const wb = XLSX.read(data, { type: 'array' });
@@ -6236,18 +6354,17 @@
             updateTaskTypeSelector();
             updateProjectSelects();
             updateExecutorSelects();
-            updateExecutorFilter(); // 更新执行人筛选器
-            updateTaskList(); // 更新任务列表
-            ensureProjectColors(); // 确保所有项目都有颜色配置
-            
-            // 设置周六、周日是否为工作日的复选框状态
+            updateExecutorFilter();
+            updateTaskList();
+            ensureProjectColors();
+
             document.getElementById('saturdayWorkday').checked = !!saturdayWorkday;
             document.getElementById('sundayWorkday').checked = !!sundayWorkday;
-            
+
             syncHideProjectBarWhenSingleProjectToggle();
-            
+
             initLeftPanelNav();
-            
+
             requestAnimationFrame(function () {
                 requestAnimationFrame(scrollGanttToToday);
             });
@@ -6819,7 +6936,7 @@
             if (changed) saveData();
             
             document.querySelectorAll('.gantt-bar').forEach(function (b) {
-                b.draggable = true;
+                b.draggable = hasEditPermission();
             });
         }
         
@@ -6832,67 +6949,78 @@
         
         // 使任务时间条可拖拽
         function makeTaskBarDraggable(bar, task, phase, executorName) {
+            const canEdit = hasEditPermission();
+            
             // 添加光标样式，提示用户可以拖拽
-            bar.style.cursor = 'move';
-            bar.style.zIndex = '100'; // 确保甘特条在最上层
-            bar.style.userSelect = 'none'; // 防止文本选择
+            if (canEdit) {
+                bar.style.cursor = 'move';
+                bar.style.zIndex = '100'; // 确保甘特条在最上层
+                bar.style.userSelect = 'none'; // 防止文本选择
+            } else {
+                bar.style.cursor = 'default';
+            }
             
             // 保存任务和阶段信息
             bar.task = task;
             bar.phase = phase;
             bar.executorName = executorName;
             
-            // 添加左右拖拽手柄
-            const leftHandle = document.createElement('div');
-            leftHandle.className = 'resize-handle left';
-            leftHandle.dataset.resize = 'left';
-            leftHandle.style.zIndex = '101'; // 确保手柄在甘特条上方
-            
-            const rightHandle = document.createElement('div');
-            rightHandle.className = 'resize-handle right';
-            rightHandle.dataset.resize = 'right';
-            rightHandle.style.zIndex = '101'; // 确保手柄在甘特条上方
-            
-            bar.appendChild(leftHandle);
-            bar.appendChild(rightHandle);
-            
-            function attachResizePointerDown(handleEl) {
-                handleEl.addEventListener('pointerdown', function (e) {
-                    if (e.button != null && e.button !== 0) return;
-                    ganttBarResizeSession = {
-                        phase: phase,
+            // 只有管理员可以添加左右拖拽手柄
+            if (canEdit) {
+                // 添加左右拖拽手柄
+                const leftHandle = document.createElement('div');
+                leftHandle.className = 'resize-handle left';
+                leftHandle.dataset.resize = 'left';
+                leftHandle.style.zIndex = '101'; // 确保手柄在甘特条上方
+                
+                const rightHandle = document.createElement('div');
+                rightHandle.className = 'resize-handle right';
+                rightHandle.dataset.resize = 'right';
+                rightHandle.style.zIndex = '101'; // 确保手柄在甘特条上方
+                
+                bar.appendChild(leftHandle);
+                bar.appendChild(rightHandle);
+                
+                function attachResizePointerDown(handleEl) {
+                    handleEl.addEventListener('pointerdown', function (e) {
+                        if (e.button != null && e.button !== 0) return;
+                        ganttBarResizeSession = {
+                            phase: phase,
+                            executorName: executorName,
+                            startX: e.clientX,
+                            originalStartMs: new Date(phase.startDate).getTime(),
+                            originalEndMs: new Date(phase.endDate).getTime(),
+                            direction: handleEl.dataset.resize
+                        };
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }, { passive: false });
+                }
+                attachResizePointerDown(leftHandle);
+                attachResizePointerDown(rightHandle);
+                
+                // 调整起止时间过程中禁用 HTML5 拖拽，避免抢占鼠标；重建后由 !ganttBarResizeSession 设为 false
+                bar.draggable = !ganttBarResizeSession;
+                
+                // 为任务时间条添加拖拽开始事件（整体移动）
+                bar.addEventListener('dragstart', function(e) {
+                    if (ganttBarResizeSession) {
+                        e.preventDefault();
+                        return;
+                    }
+                    e.dataTransfer.setData('text/plain', JSON.stringify({
+                        taskId: task.id,
+                        phaseIndex: task.phases ? task.phases.indexOf(phase) : -1,
                         executorName: executorName,
                         startX: e.clientX,
-                        originalStartMs: new Date(phase.startDate).getTime(),
-                        originalEndMs: new Date(phase.endDate).getTime(),
-                        direction: handleEl.dataset.resize
-                    };
-                    e.preventDefault();
-                    e.stopPropagation();
-                }, { passive: false });
+                        originalStart: phase.startDate,
+                        originalEnd: phase.endDate
+                    }));
+                    e.dataTransfer.effectAllowed = 'move';
+                });
+            } else {
+                bar.draggable = false;
             }
-            attachResizePointerDown(leftHandle);
-            attachResizePointerDown(rightHandle);
-            
-            // 调整起止时间过程中禁用 HTML5 拖拽，避免抢占鼠标；重建后由 !ganttBarResizeSession 设为 false
-            bar.draggable = !ganttBarResizeSession;
-            
-            // 为任务时间条添加拖拽开始事件（整体移动）
-            bar.addEventListener('dragstart', function(e) {
-                if (ganttBarResizeSession) {
-                    e.preventDefault();
-                    return;
-                }
-                e.dataTransfer.setData('text/plain', JSON.stringify({
-                    taskId: task.id,
-                    phaseIndex: task.phases ? task.phases.indexOf(phase) : -1,
-                    executorName: executorName,
-                    startX: e.clientX,
-                    originalStart: phase.startDate,
-                    originalEnd: phase.endDate
-                }));
-                e.dataTransfer.effectAllowed = 'move';
-            });
         }
         
         // 为甘特图容器添加拖拽经过事件
@@ -6907,6 +7035,9 @@
         
         // 为甘特图容器添加放置事件
         document.addEventListener('drop', function(e) {
+            // 检查用户是否有编辑权限
+            if (!hasEditPermission()) return;
+            
             // 查找甘特图容器
             const ganttContainer = e.target.closest('.gantt-bar-container');
             if (!ganttContainer) return;
@@ -7092,11 +7223,116 @@
             }
         }
         
+        // 检查用户登录状态
+        function checkLogin() {
+            const token = localStorage.getItem('authToken');
+            const user = localStorage.getItem('user');
+            
+            if (!token || !user) {
+                window.location.href = '/login.html';
+                return false;
+            }
+            
+            return JSON.parse(user);
+        }
+        
+        // 显示用户信息
+        function showUserInfo(user) {
+            const userInfo = document.getElementById('userInfo');
+            const userManagementBtn = document.getElementById('userManagementBtn');
+            
+            if (user) {
+                userInfo.textContent = `欢迎, ${user.username} (${getRoleText(user.role)})`;
+                
+                // 只有管理员可以访问用户管理
+                if (user.role === 'admin') {
+                    userManagementBtn.style.display = 'inline-block';
+                }
+            }
+        }
+        
+        // 获取角色文本
+        function getRoleText(role) {
+            const roleMap = {
+                admin: '管理员',
+                user: '普通用户'
+            };
+            return roleMap[role] || role;
+        }
+        
+        // 检查用户是否有编辑权限
+        function hasEditPermission() {
+            const user = checkLogin();
+            return user && (user.role === 'admin' || user.permissions.includes('write'));
+        }
+        
+        // 检查用户是否有设置权限
+        function hasSettingsPermission() {
+            const user = checkLogin();
+            return user && (user.role === 'admin' || user.permissions.includes('settings'));
+        }
+        
+        // 退出登录
+        function logout() {
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('user');
+            window.location.href = '/login.html';
+        }
+        
+        // 跳转到用户管理
+        function goToUserManagement() {
+            window.location.href = '/user-management.html';
+        }
+        
+        // 初始化用户相关功能
+        function initUserFeatures() {
+            const user = checkLogin();
+            if (user) {
+                showUserInfo(user);
+                
+                // 绑定退出登录事件
+                const logoutBtn = document.getElementById('logoutBtn');
+                if (logoutBtn) {
+                    logoutBtn.addEventListener('click', logout);
+                }
+                
+                // 绑定用户管理事件
+                const userManagementBtn = document.getElementById('userManagementBtn');
+                if (userManagementBtn) {
+                    userManagementBtn.addEventListener('click', goToUserManagement);
+                }
+            }
+        }
+        
         // 页面加载完成后初始化
-        window.onload = function() {
-            // 确保DOM完全加载
-            setTimeout(function() {
-                initApp();
+        window.onload = async function() {
+            setTimeout(async function() {
+                try {
+                    // 初始化用户功能
+                    initUserFeatures();
+                    
+                    await initApp();
+                } catch (error) {
+                    console.error('初始化应用失败:', error);
+                    try {
+                        colorConfig = defaultColorConfig();
+                        holidays = getDefaultHolidays();
+                        projectList = ['项目A', '项目B'];
+                        executorList = ['张三', '李四', '王五'];
+                        projectColorConfig = { '项目A': '#3498db', '项目B': '#2ecc71' };
+                        executors = [
+                            { executor: '张三', tasks: [{ id: 1, name: '任务1', project: '项目A', phases: [{type: '计划', startDate: '2026-04-01', endDate: '2026-04-05'}, {type: '执行', startDate: '2026-04-06', endDate: '2026-04-10'}, {type: '检查', startDate: '2026-04-11', endDate: '2026-04-15'}] }] },
+                            { executor: '李四', tasks: [{ id: 2, name: '任务2', project: '项目B', phases: [{type: '计划', startDate: '2026-04-03', endDate: '2026-04-07'}, {type: '执行', startDate: '2026-04-08', endDate: '2026-04-15'}, {type: '收尾', startDate: '2026-04-16', endDate: '2026-04-20'}] }] },
+                            { executor: '王五', tasks: [{ id: 3, name: '任务3', project: '项目A', phases: [{type: '执行', startDate: '2026-04-12', endDate: '2026-04-20'}, {type: '检查', startDate: '2026-04-21', endDate: '2026-04-25'}] }] }
+                        ];
+                        startDate = new Date('2026-01-01');
+                        endDate = new Date('2026-06-30');
+                        init();
+                        generateTaskTypeLegend();
+                    } catch (innerError) {
+                        console.error('使用默认数据初始化应用失败:', innerError);
+                    }
+                }
             }, 100);
         };
     </script>

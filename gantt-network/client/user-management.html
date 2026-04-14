@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户管理 - 甘特图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .header h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+        }
+        
+        .nav {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .nav button {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav button:hover {
+            background: #f0f0f0;
+        }
+        
+        .nav button.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .content {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        
+        .users-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        .users-table th,
+        .users-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .users-table th {
+            background: #f5f7fa;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .users-table tr:hover {
+            background: #f9f9f9;
+        }
+        
+        .btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5a6fd8;
+        }
+        
+        .btn-warning {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        .btn-warning:hover {
+            background: #e0a800;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: #c82333;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-header h2 {
+            color: #333;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #333;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+        
+        .message {
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .message-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .message-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .permissions-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 5px;
+        }
+        
+        .permission-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-left">
+                <h1>用户管理</h1>
+            </div>
+            <div class="header-right">
+                <button id="backToGanttBtn" class="header-btn">返回甘特图</button>
+                <button id="logoutBtn" class="header-btn">退出登录</button>
+                <span id="userInfo" class="user-info"></span>
+            </div>
+        </div>
+        
+        <style>
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+                background: white;
+                border-bottom: 1px solid #ddd;
+                border-radius: 8px 8px 0 0;
+            }
+            
+            .header-left h1 {
+                margin: 0;
+                color: #333;
+            }
+            
+            .header-right {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .header-btn {
+                padding: 8px 16px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                background: white;
+                cursor: pointer;
+                font-size: 14px;
+                transition: all 0.3s ease;
+            }
+            
+            .header-btn:hover {
+                background: #f0f0f0;
+            }
+            
+            .user-info {
+                font-size: 14px;
+                color: #666;
+            }
+        </style>
+        
+        <div class="nav">
+            <button class="active" onclick="showTab('users')">用户列表</button>
+            <button onclick="showTab('create')">新增用户</button>
+        </div>
+        
+        <div class="content">
+            <div id="users-tab">
+                <div id="message"></div>
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                    <th>用户名</th>
+                    <th>密码</th>
+                    <th>角色</th>
+                    <th>权限</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-body">
+                        <!-- 用户列表将通过JavaScript动态生成 -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="create-tab" style="display: none;">
+                <h2>新增用户</h2>
+                <div id="create-message"></div>
+                <form id="create-form">
+                    <div class="form-group">
+                        <label for="create-username">用户名</label>
+                        <input type="text" id="create-username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="create-password">密码</label>
+                        <input type="password" id="create-password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="create-role">角色</label>
+                        <select id="create-role" name="role">
+                            <option value="admin">管理员</option>
+                            <option value="user" selected>普通用户</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>权限</label>
+                        <div class="permissions-list">
+                            <div class="permission-item">
+                                <input type="checkbox" id="perm-read" name="permissions" value="read" checked>
+                                <label for="perm-read">查看</label>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="perm-write" name="permissions" value="write">
+                                <label for="perm-write">编辑</label>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="perm-delete" name="permissions" value="delete">
+                                <label for="perm-delete">删除</label>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="perm-admin" name="permissions" value="admin">
+                                <label for="perm-admin">管理</label>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="perm-settings" name="permissions" value="settings">
+                                <label for="perm-settings">设置</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn" onclick="showTab('users')">取消</button>
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 编辑用户模态框 -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>编辑用户</h2>
+                <span class="close" onclick="closeEditModal()">&times;</span>
+            </div>
+            <div id="edit-message"></div>
+            <form id="edit-form">
+                <input type="hidden" id="edit-id" name="id">
+                <div class="form-group">
+                    <label for="edit-username">用户名</label>
+                    <input type="text" id="edit-username" name="username" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="edit-password">密码（留空不修改）</label>
+                    <input type="password" id="edit-password" name="password">
+                </div>
+                <div class="form-group">
+                    <label for="edit-role">角色</label>
+                    <select id="edit-role" name="role">
+                        <option value="admin">管理员</option>
+                        <option value="user">普通用户</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>权限</label>
+                    <div class="permissions-list">
+                        <div class="permission-item">
+                            <input type="checkbox" id="edit-perm-read" name="permissions" value="read">
+                            <label for="edit-perm-read">查看</label>
+                        </div>
+                        <div class="permission-item">
+                            <input type="checkbox" id="edit-perm-write" name="permissions" value="write">
+                            <label for="edit-perm-write">编辑</label>
+                        </div>
+                        <div class="permission-item">
+                            <input type="checkbox" id="edit-perm-delete" name="permissions" value="delete">
+                            <label for="edit-perm-delete">删除</label>
+                        </div>
+                        <div class="permission-item">
+                                <input type="checkbox" id="edit-perm-admin" name="permissions" value="admin">
+                                <label for="edit-perm-admin">管理</label>
+                            </div>
+                            <div class="permission-item">
+                                <input type="checkbox" id="edit-perm-settings" name="permissions" value="settings">
+                                <label for="edit-perm-settings">设置</label>
+                            </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn" onclick="closeEditModal()">取消</button>
+                    <button type="submit" class="btn btn-primary">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- 删除确认模态框 -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>确认删除</h2>
+                <span class="close" onclick="closeDeleteModal()">&times;</span>
+            </div>
+            <p>确定要删除用户 <strong id="delete-username"></strong> 吗？</p>
+            <input type="hidden" id="delete-id">
+            <div class="form-actions">
+                <button type="button" class="btn" onclick="closeDeleteModal()">取消</button>
+                <button type="button" class="btn btn-danger" onclick="confirmDelete()">删除</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentUser = null;
+        
+        // 检查登录状态
+        function checkLogin() {
+            const token = localStorage.getItem('authToken');
+            const user = localStorage.getItem('user');
+            
+            if (!token || !user) {
+                window.location.href = '/login.html';
+                return false;
+            }
+            
+            currentUser = JSON.parse(user);
+            
+            // 检查是否有权限访问用户管理
+            if (currentUser.role !== 'admin' && currentUser.role !== 'manager') {
+                alert('没有权限访问用户管理');
+                window.location.href = '/index.html';
+                return false;
+            }
+            
+            return true;
+        }
+        
+        // 显示标签页
+        function showTab(tabName) {
+            document.getElementById('users-tab').style.display = tabName === 'users' ? 'block' : 'none';
+            document.getElementById('create-tab').style.display = tabName === 'create' ? 'block' : 'none';
+            
+            // 更新导航按钮状态
+            document.querySelectorAll('.nav button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`button[onclick="showTab('${tabName}')"]`).classList.add('active');
+            
+            if (tabName === 'users') {
+                loadUsers();
+            }
+        }
+        
+        // 加载用户列表
+        async function loadUsers() {
+            try {
+                const token = localStorage.getItem('authToken');
+                const response = await fetch('/api/users', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    renderUsers(result.data);
+                } else {
+                    showMessage('message', result.message || '加载用户失败', 'error');
+                }
+            } catch (error) {
+                console.error('加载用户失败:', error);
+                showMessage('message', '加载用户失败，请检查网络连接', 'error');
+            }
+        }
+        
+        // 渲染用户列表
+        function renderUsers(users) {
+            const tbody = document.getElementById('users-body');
+            tbody.innerHTML = '';
+            
+            users.forEach(user => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${user.id}</td>
+                    <td>${user.username}</td>
+                    <td>${user.password}</td>
+                    <td>${getRoleText(user.role)}</td>
+                    <td>${user.permissions.map(p => getPermissionText(p)).join(', ')}</td>
+                    <td>${new Date(user.createdAt).toLocaleString()}</td>
+                    <td>
+                        ${currentUser.role === 'admin' ? `<button class="btn btn-warning" onclick="editUser('${user.id}')">编辑</button>` : ''}
+                        ${currentUser.role === 'admin' && user.id !== currentUser.id ? `<button class="btn btn-danger" onclick="confirmDeleteUser('${user.id}', '${user.username}')">删除</button>` : ''}
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+        
+        // 获取角色文本
+        function getRoleText(role) {
+            const roleMap = {
+                admin: '管理员',
+                user: '普通用户'
+            };
+            return roleMap[role] || role;
+        }
+        
+        // 获取权限文本
+        function getPermissionText(permission) {
+            const permMap = {
+                read: '查看',
+                write: '编辑',
+                delete: '删除',
+                admin: '管理',
+                settings: '设置'
+            };
+            return permMap[permission] || permission;
+        }
+        
+        // 编辑用户
+        async function editUser(userId) {
+            try {
+                const token = localStorage.getItem('authToken');
+                const response = await fetch(`/api/users/${userId}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    const user = result.data;
+                    document.getElementById('edit-id').value = user.id;
+                    document.getElementById('edit-username').value = user.username;
+                    document.getElementById('edit-role').value = user.role;
+                    
+                    // 重置权限复选框
+                    ['read', 'write', 'delete', 'admin', 'settings'].forEach(perm => {
+                        document.getElementById(`edit-perm-${perm}`).checked = user.permissions.includes(perm);
+                    });
+                    
+                    document.getElementById('editModal').style.display = 'block';
+                } else {
+                    showMessage('message', result.message || '获取用户信息失败', 'error');
+                }
+            } catch (error) {
+                console.error('获取用户信息失败:', error);
+                showMessage('message', '获取用户信息失败，请检查网络连接', 'error');
+            }
+        }
+        
+        // 确认删除用户
+        function confirmDeleteUser(userId, username) {
+            document.getElementById('delete-id').value = userId;
+            document.getElementById('delete-username').textContent = username;
+            document.getElementById('deleteModal').style.display = 'block';
+        }
+        
+        // 确认删除
+        async function confirmDelete() {
+            const userId = document.getElementById('delete-id').value;
+            
+            try {
+                const token = localStorage.getItem('authToken');
+                const response = await fetch(`/api/users/${userId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    closeDeleteModal();
+                    showMessage('message', '用户删除成功', 'success');
+                    loadUsers();
+                } else {
+                    showMessage('message', result.message || '删除用户失败', 'error');
+                }
+            } catch (error) {
+                console.error('删除用户失败:', error);
+                showMessage('message', '删除用户失败，请检查网络连接', 'error');
+            }
+        }
+        
+        // 关闭编辑模态框
+        function closeEditModal() {
+            document.getElementById('editModal').style.display = 'none';
+            document.getElementById('edit-message').innerHTML = '';
+        }
+        
+        // 关闭删除模态框
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').style.display = 'none';
+        }
+        
+        // 显示消息
+        function showMessage(elementId, message, type) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = `<div class="message message-${type}">${message}</div>`;
+            
+            setTimeout(() => {
+                element.innerHTML = '';
+            }, 3000);
+        }
+        
+        // 新增用户表单提交
+        document.getElementById('create-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const permissions = Array.from(formData.getAll('permissions'));
+            
+            const userData = {
+                username: formData.get('username'),
+                password: formData.get('password'),
+                role: formData.get('role'),
+                permissions
+            };
+            
+            try {
+                const token = localStorage.getItem('authToken');
+                const response = await fetch('/api/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(userData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showMessage('create-message', '用户创建成功', 'success');
+                    this.reset();
+                    showTab('users');
+                } else {
+                    showMessage('create-message', result.message || '创建用户失败', 'error');
+                }
+            } catch (error) {
+                console.error('创建用户失败:', error);
+                showMessage('create-message', '创建用户失败，请检查网络连接', 'error');
+            }
+        });
+        
+        // 编辑用户表单提交
+        document.getElementById('edit-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const permissions = Array.from(formData.getAll('permissions'));
+            const userId = formData.get('id');
+            
+            const userData = {
+                role: formData.get('role'),
+                permissions
+            };
+            
+            const password = formData.get('password');
+            if (password) {
+                userData.password = password;
+            }
+            
+            try {
+                const token = localStorage.getItem('authToken');
+                const response = await fetch(`/api/users/${userId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(userData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    closeEditModal();
+                    showMessage('message', '用户更新成功', 'success');
+                    loadUsers();
+                } else {
+                    showMessage('edit-message', result.message || '更新用户失败', 'error');
+                }
+            } catch (error) {
+                console.error('更新用户失败:', error);
+                showMessage('edit-message', '更新用户失败，请检查网络连接', 'error');
+            }
+        });
+        
+        // 显示用户信息
+        function showUserInfo(user) {
+            const userInfo = document.getElementById('userInfo');
+            
+            if (user) {
+                userInfo.textContent = `欢迎, ${user.username} (${getRoleText(user.role)})`;
+            }
+        }
+        
+        // 退出登录
+        function logout() {
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('user');
+            window.location.href = '/login.html';
+        }
+        
+        // 返回到甘特图
+        function backToGantt() {
+            window.location.href = '/index.html';
+        }
+        
+        // 页面加载完成后初始化
+        window.onload = function() {
+            if (checkLogin()) {
+                loadUsers();
+                
+                // 绑定退出登录事件
+                const logoutBtn = document.getElementById('logoutBtn');
+                if (logoutBtn) {
+                    logoutBtn.addEventListener('click', logout);
+                }
+                
+                // 绑定返回甘特图事件
+                const backToGanttBtn = document.getElementById('backToGanttBtn');
+                if (backToGanttBtn) {
+                    backToGanttBtn.addEventListener('click', backToGantt);
+                }
+            }
+        };
+    </script>
+</body>
+</html>
