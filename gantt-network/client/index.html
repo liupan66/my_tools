@@ -2637,11 +2637,13 @@
         // 创建备份
         async function createBackup() {
             try {
+                const token = localStorage.getItem('authToken');
+                const headers = { 'Content-Type': 'application/json' };
+                if (token) headers['Authorization'] = 'Bearer ' + token;
+                
                 const response = await fetch('/api/backup', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
+                    headers: headers
                 });
                 const result = await response.json();
                 if (result.success) {
@@ -2659,7 +2661,13 @@
         // 加载备份列表
         async function loadBackupList() {
             try {
-                const response = await fetch('/api/backups');
+                const token = localStorage.getItem('authToken');
+                const headers = {};
+                if (token) headers['Authorization'] = 'Bearer ' + token;
+                
+                const response = await fetch('/api/backups', {
+                    headers: headers
+                });
                 const backups = await response.json();
                 const backupList = document.getElementById('backupList');
                 
@@ -2709,17 +2717,17 @@
             }
             
             try {
-                const response = await fetch('/api/restore', {
+                const token = localStorage.getItem('authToken');
+                const headers = { 'Content-Type': 'application/json' };
+                if (token) headers['Authorization'] = 'Bearer ' + token;
+                
+                const response = await fetch(`/api/backup/restore/${fileName}`, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ fileName })
+                    headers: headers
                 });
                 const result = await response.json();
                 if (result.success) {
                     alert('恢复成功！页面将自动刷新。');
-                    // 重新加载数据
                     location.reload();
                 } else {
                     alert('恢复失败！');
@@ -2737,8 +2745,13 @@
             }
             
             try {
+                const token = localStorage.getItem('authToken');
+                const headers = {};
+                if (token) headers['Authorization'] = 'Bearer ' + token;
+                
                 const response = await fetch(`/api/backup/${fileName}`, {
-                    method: 'DELETE'
+                    method: 'DELETE',
+                    headers: headers
                 });
                 const result = await response.json();
                 if (result.success) {
