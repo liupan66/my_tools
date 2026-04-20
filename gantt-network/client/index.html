@@ -393,7 +393,8 @@
         
         #colorItems,
         #projectItems,
-        #executorItems {
+        #executorItems,
+        #teamItems {
             position: relative;
             min-height: 80px;
         }
@@ -1462,7 +1463,18 @@
                                                 </div>
                                             </button>
                                             <div class="multi-select-dropdown" id="multiSelectProjectDropdown">
-                                                <!-- 选项将通过JavaScript动态生成 -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="filterTeam">所属团队（可多选）</label>
+                                        <div class="multi-select" id="multiSelectTeam">
+                                            <button type="button" class="multi-select-btn" onclick="toggleMultiSelect('multiSelectTeam')">
+                                                <div class="multi-select-tags" id="multiSelectTeamTags">
+                                                    <span class="multi-select-placeholder">请选择</span>
+                                                </div>
+                                            </button>
+                                            <div class="multi-select-dropdown" id="multiSelectTeamDropdown">
                                             </div>
                                         </div>
                                     </div>
@@ -1543,6 +1555,7 @@
                 <div class="settings-sidebar">
                     <div class="settings-sidebar-item active" data-section="task-types">任务类型</div>
                     <div class="settings-sidebar-item" data-section="projects">项目管理</div>
+                    <div class="settings-sidebar-item" data-section="teams">团队管理</div>
                     <div class="settings-sidebar-item" data-section="executors">执行人管理</div>
                     <div class="settings-sidebar-item" data-section="holidays">节假日与周末</div>
                     <div class="settings-sidebar-item" data-section="date-range">日期范围</div>
@@ -1604,6 +1617,27 @@
                                         <input type="color" id="newProjectColor" value="#3498db" required>
                                     </div>
                                     <button type="button" class="add-btn" onclick="addProject()">添加项目</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 团队管理设置 -->
+                    <div class="settings-section" id="teams">
+                        <div class="config-card">
+                            <h3>团队管理</h3>
+                            <div id="teamItems">
+                            </div>
+                        </div>
+                        <div class="config-card">
+                            <h3>添加团队</h3>
+                            <div class="add-team">
+                                <div class="task-form" style="margin-bottom: 10px;">
+                                    <div class="form-group">
+                                        <label for="newTeam">团队名称</label>
+                                        <input type="text" id="newTeam" required>
+                                    </div>
+                                    <button type="button" class="add-btn" onclick="addTeam()">添加团队</button>
                                 </div>
                             </div>
                         </div>
@@ -1835,7 +1869,8 @@
         function buildStateFromData(d) {
             const executors = Array.isArray(d.executors) ? d.executors.map(e => ({
                 ...e,
-                tasks: Array.isArray(e.tasks) ? e.tasks : []
+                tasks: Array.isArray(e.tasks) ? e.tasks : [],
+                team: e.team || ''
             })) : [];
             const derivedExecutorList = executors.map(e => e.executor);
             const savedExecutorList = Array.isArray(d.executorList) ? d.executorList : [];
@@ -1848,6 +1883,8 @@
                 sundayWorkday: !!d.sundayWorkday,
                 projectList: Array.isArray(d.projectList) && d.projectList.length ? d.projectList : ['项目A', '项目B'],
                 executorList: mergedExecutorList.length ? mergedExecutorList : derivedExecutorList,
+                ganttExecutorOrder: Array.isArray(d.ganttExecutorOrder) ? d.ganttExecutorOrder : [],
+                teamList: Array.isArray(d.teamList) ? d.teamList : [],
                 projectColorConfig: d.projectColorConfig && typeof d.projectColorConfig === 'object' ? d.projectColorConfig : {
                     '项目A': '#3498db',
                     '项目B': '#2ecc71'
@@ -2052,6 +2089,8 @@
                     sundayWorkday: sundayWorkday,
                     projectList: projectList,
                     executorList: mergedExecutorList,
+                    ganttExecutorOrder: ganttExecutorOrder,
+                    teamList: teamList,
                     projectColorConfig: projectColorConfig,
                     startDate: formatDateLocal(sd),
                     endDate: formatDateLocal(ed),
@@ -2216,6 +2255,8 @@
         let sundayWorkday = false;
         let projectList = [];
         let executorList = [];
+        let ganttExecutorOrder = [];
+        let teamList = [];
         let projectColorConfig = {};
         let hideProjectBarWhenSingleProject = true;
         let startDate = new Date('2026-01-01');
@@ -2230,6 +2271,7 @@
             taskTypes: [],
             executors: [],
             projects: [],
+            teams: [],
             startDate: '',
             endDate: ''
         };
@@ -2472,7 +2514,6 @@
             const loadedData = await loadData();
             if (loadedData) {
                 console.log('加载到数据，更新应用状态');
-                // 更新应用状态
                 colorConfig = loadedData.colorConfig || colorConfig;
                 holidays = loadedData.holidays || holidays;
                 projectList = loadedData.projectList || projectList;
@@ -2482,6 +2523,8 @@
                 startDate = loadedData.startDate || startDate;
                 endDate = loadedData.endDate || endDate;
                 hideProjectBarWhenSingleProject = loadedData.hideProjectBarWhenSingleProject !== false;
+                ganttExecutorOrder = loadedData.ganttExecutorOrder || ganttExecutorOrder;
+                teamList = loadedData.teamList || teamList;
             }
             
             // 确保 executorList 中不包含"添加任务"
@@ -2497,6 +2540,7 @@
             renderMultiSelect('multiSelectTaskType', Object.keys(colorConfig), filterConditions.taskTypes || []);
             renderMultiSelect('multiSelectExecutor', executorList, filterConditions.executors || []);
             renderMultiSelect('multiSelectProject', projectList, filterConditions.projects || []);
+            renderMultiSelect('multiSelectTeam', teamList, filterConditions.teams || []);
             
             // 初始化日期范围设置
             const startDateInput = document.getElementById('startDateInput');
@@ -2711,9 +2755,10 @@
                 filterConditions.executors = selectedValues;
             } else if (selectId === 'multiSelectProject') {
                 filterConditions.projects = selectedValues;
+            } else if (selectId === 'multiSelectTeam') {
+                filterConditions.teams = selectedValues;
             }
             
-            // 重新渲染
             let options = [];
             if (selectId === 'multiSelectTaskType') {
                 options = Object.keys(colorConfig);
@@ -2721,6 +2766,8 @@
                 options = executorList;
             } else if (selectId === 'multiSelectProject') {
                 options = projectList;
+            } else if (selectId === 'multiSelectTeam') {
+                options = teamList;
             }
             
             renderMultiSelect(selectId, options, selectedValues);
@@ -2738,9 +2785,10 @@
                 filterConditions.executors = selectedValues;
             } else if (selectId === 'multiSelectProject') {
                 filterConditions.projects = selectedValues;
+            } else if (selectId === 'multiSelectTeam') {
+                filterConditions.teams = selectedValues;
             }
             
-            // 重新渲染
             let options = [];
             if (selectId === 'multiSelectTaskType') {
                 options = Object.keys(colorConfig);
@@ -2748,12 +2796,13 @@
                 options = executorList;
             } else if (selectId === 'multiSelectProject') {
                 options = projectList;
+            } else if (selectId === 'multiSelectTeam') {
+                options = teamList;
             }
             
             renderMultiSelect(selectId, options, selectedValues);
         }
         
-        // 获取多选组件的值
         function getMultiSelectValues(selectId) {
             if (selectId === 'multiSelectTaskType') {
                 return filterConditions.taskTypes || [];
@@ -2761,6 +2810,8 @@
                 return filterConditions.executors || [];
             } else if (selectId === 'multiSelectProject') {
                 return filterConditions.projects || [];
+            } else if (selectId === 'multiSelectTeam') {
+                return filterConditions.teams || [];
             }
             return [];
         }
@@ -2791,7 +2842,6 @@
         
         // 清空多选框选中的值
         function clearSelectedOptions(selectId) {
-            // 新的多选组件
             if (selectId === 'filterTaskType') {
                 filterConditions.taskTypes = [];
                 renderMultiSelect('multiSelectTaskType', Object.keys(colorConfig), []);
@@ -2801,6 +2851,9 @@
             } else if (selectId === 'filterProject') {
                 filterConditions.projects = [];
                 renderMultiSelect('multiSelectProject', projectList, []);
+            } else if (selectId === 'filterTeam') {
+                filterConditions.teams = [];
+                renderMultiSelect('multiSelectTeam', teamList, []);
             }
             
             // 旧的select元素
@@ -2815,9 +2868,10 @@
         // 应用筛选
         function applyFilter() {
             filterConditions = {
-                taskTypes: getSelectedOptions('filterTaskType'),
-                executors: getSelectedOptions('filterExecutor'),
-                projects: getSelectedOptions('filterProject'),
+                taskTypes: getMultiSelectValues('multiSelectTaskType'),
+                executors: getMultiSelectValues('multiSelectExecutor'),
+                projects: getMultiSelectValues('multiSelectProject'),
+                teams: getMultiSelectValues('multiSelectTeam'),
                 startDate: document.getElementById('filterStartDate').value,
                 endDate: document.getElementById('filterEndDate').value
             };
@@ -2830,12 +2884,14 @@
             clearSelectedOptions('filterTaskType');
             clearSelectedOptions('filterExecutor');
             clearSelectedOptions('filterProject');
+            clearSelectedOptions('filterTeam');
             document.getElementById('filterStartDate').value = '';
             document.getElementById('filterEndDate').value = '';
             filterConditions = {
                 taskTypes: [],
                 executors: [],
                 projects: [],
+                teams: [],
                 startDate: '',
                 endDate: ''
             };
@@ -2847,6 +2903,7 @@
             return !!(filterConditions.taskTypes.length > 0 || 
                 filterConditions.executors.length > 0 || 
                 filterConditions.projects.length > 0 ||
+                filterConditions.teams.length > 0 ||
                 filterConditions.startDate || 
                 filterConditions.endDate);
         }
@@ -2993,26 +3050,31 @@
                     return false;
                 }
                 
-                // 即使没有任务，也返回执行人，这样用户可以看到执行人和"添加任务"按钮
+                if (filterConditions.teams.length > 0) {
+                    const executorTeam = executor.team || '';
+                    if (!filterConditions.teams.includes(executorTeam)) {
+                        return false;
+                    }
+                }
+                
                 return true;
             });
             
-            // 确保执行的顺序与executorList中的顺序一致
+            const orderSource = ganttExecutorOrder.length > 0 ? ganttExecutorOrder : allExecutors.map(e => e.executor);
             const orderedExecutors = [];
-            executorList.forEach(executorName => {
+            orderSource.forEach(executorName => {
                 const executor = allExecutors.find(e => e.executor === executorName);
                 if (executor) {
                     orderedExecutors.push(executor);
-                } else {
-                    // 如果执行人不在allExecutors中，创建一个新的执行对象
-                    orderedExecutors.push({
-                        executor: executorName,
-                        tasks: []
-                    });
                 }
             });
             
-            // 如果没有执行人，返回空数组
+            allExecutors.forEach(executor => {
+                if (!orderedExecutors.find(e => e.executor === executor.executor)) {
+                    orderedExecutors.push(executor);
+                }
+            });
+            
             return orderedExecutors;
         }
         
@@ -3158,12 +3220,15 @@
             executorItems.innerHTML = '';
             
             executorList.forEach((executor, index) => {
+                const executorData = executors.find(e => e.executor === executor);
+                const teamName = executorData ? (executorData.team || '') : '';
+                
                 const executorItem = document.createElement('div');
                 executorItem.className = 'color-item';
                 executorItem.dataset.executor = executor;
                 
                 executorItem.innerHTML = `
-                    <label>${executor}</label>
+                    <label>${executor}${teamName ? ' <span style="color:#666;font-size:12px;">(' + teamName + ')</span>' : ''}</label>
                     <button class="edit-btn" onclick="editExecutor('${executor}')">编辑</button>
                     <button class="delete-btn" onclick="removeExecutor('${executor}')">删除</button>
                     <span class="list-drag-handle" title="拖动排序"></span>
@@ -3174,7 +3239,135 @@
             
         }
         
-        // 添加执行人
+        function renderTeamList() {
+            const teamItems = document.getElementById('teamItems');
+            if (!teamItems) return;
+            
+            teamItems.innerHTML = '';
+            
+            teamList.forEach((team, index) => {
+                const memberCount = executors.filter(e => e.team === team).length;
+                const teamItem = document.createElement('div');
+                teamItem.className = 'color-item';
+                teamItem.dataset.team = team;
+                
+                teamItem.innerHTML = `
+                    <label>${team} <span style="color:#666;font-size:12px;">(${memberCount}人)</span></label>
+                    <button class="edit-btn" onclick="editTeam('${team.replace(/'/g, "\\'")}')">编辑</button>
+                    <button class="delete-btn" onclick="removeTeam('${team.replace(/'/g, "\\'")}')">删除</button>
+                `;
+                
+                teamItems.appendChild(teamItem);
+            });
+        }
+        
+        function addTeam() {
+            const newTeamInput = document.getElementById('newTeam');
+            const teamName = newTeamInput.value.trim();
+            
+            if (teamName) {
+                if (!teamList.includes(teamName)) {
+                    teamList.push(teamName);
+                    saveData();
+                    renderTeamList();
+                    renderExecutorList();
+                    renderMultiSelect('multiSelectTeam', teamList, filterConditions.teams || []);
+                    newTeamInput.value = '';
+                } else {
+                    alert('团队已存在');
+                }
+            }
+        }
+        
+        function removeTeam(teamName) {
+            if (confirm(`确定要删除团队 "${teamName}" 吗？该团队下的执行人的所属团队将被清空。`)) {
+                teamList = teamList.filter(t => t !== teamName);
+                executors.forEach(e => {
+                    if (e.team === teamName) {
+                        e.team = '';
+                    }
+                });
+                saveData();
+                renderTeamList();
+                renderExecutorList();
+                renderMultiSelect('multiSelectTeam', teamList, filterConditions.teams || []);
+            }
+        }
+        
+        function editTeam(oldTeamName) {
+            let modal = document.getElementById('editTeamModal');
+            if (modal) modal.remove();
+            
+            modal = document.createElement('div');
+            modal.id = 'editTeamModal';
+            modal.style.position = 'fixed';
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
+            modal.style.display = 'flex';
+            modal.style.alignItems = 'center';
+            modal.style.justifyContent = 'center';
+            modal.style.zIndex = '10000';
+            
+            modal.innerHTML = `
+                <div style="background: white; padding: 20px; border-radius: 8px; width: 400px; max-width: 90%;">
+                    <h3 style="margin-top:0">编辑团队</h3>
+                    <div style="margin-bottom:15px">
+                        <label style="display:block;margin-bottom:5px;font-weight:bold">团队名称</label>
+                        <input type="text" id="editTeamNameInput" value="${oldTeamName}" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px">
+                    </div>
+                    <div style="display:flex;gap:10px;justify-content:flex-end">
+                        <button id="editTeamCancelBtn" style="padding:8px 16px;background:#95a5a6;color:white;border:none;border-radius:4px;cursor:pointer">取消</button>
+                        <button id="editTeamSaveBtn" style="padding:8px 16px;background:#3498db;color:white;border:none;border-radius:4px;cursor:pointer">保存</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            document.getElementById('editTeamCancelBtn').onclick = () => modal.remove();
+            document.getElementById('editTeamSaveBtn').onclick = () => {
+                const newTeamName = document.getElementById('editTeamNameInput').value.trim();
+                
+                if (!newTeamName) {
+                    alert('请输入团队名称');
+                    return;
+                }
+                
+                if (newTeamName && newTeamName !== oldTeamName) {
+                    if (teamList.includes(newTeamName)) {
+                        alert('团队已存在');
+                        return;
+                    }
+                    
+                    const index = teamList.indexOf(oldTeamName);
+                    if (index !== -1) {
+                        teamList[index] = newTeamName;
+                    }
+                    
+                    executors.forEach(e => {
+                        if (e.team === oldTeamName) {
+                            e.team = newTeamName;
+                        }
+                    });
+                    
+                    if (filterConditions.teams.includes(oldTeamName)) {
+                        const fIdx = filterConditions.teams.indexOf(oldTeamName);
+                        filterConditions.teams[fIdx] = newTeamName;
+                    }
+                    
+                    saveData();
+                    renderTeamList();
+                    renderExecutorList();
+                    renderMultiSelect('multiSelectTeam', teamList, filterConditions.teams || []);
+                }
+                
+                modal.remove();
+            };
+        }
+        
         function addExecutor() {
             const newExecutorInput = document.getElementById('newExecutor');
             const executorName = newExecutorInput.value.trim();
@@ -3182,6 +3375,15 @@
             if (executorName) {
                 if (!executorList.includes(executorName)) {
                     executorList.push(executorName);
+                    
+                    if (!executors.find(e => e.executor === executorName)) {
+                        executors.push({
+                            executor: executorName,
+                            tasks: [],
+                            team: ''
+                        });
+                    }
+                    
                     saveData();
                     renderExecutorList();
                     updateExecutorSelects();
@@ -3202,35 +3404,102 @@
             }
         }
         
-        // 编辑执行人
         function editExecutor(oldExecutorName) {
-            const newExecutorName = prompt('请输入新的执行人名称:', oldExecutorName);
-            if (newExecutorName && newExecutorName.trim() && newExecutorName !== oldExecutorName) {
-                if (executorList.includes(newExecutorName)) {
-                    alert('执行人已存在');
+            const executorData = executors.find(e => e.executor === oldExecutorName);
+            const currentTeam = executorData ? (executorData.team || '') : '';
+            
+            let modal = document.getElementById('editExecutorModal');
+            if (modal) modal.remove();
+            
+            modal = document.createElement('div');
+            modal.id = 'editExecutorModal';
+            modal.style.position = 'fixed';
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
+            modal.style.display = 'flex';
+            modal.style.alignItems = 'center';
+            modal.style.justifyContent = 'center';
+            modal.style.zIndex = '10000';
+            
+            const teamOptions = teamList.map(t => `<option value="${t}" ${t === currentTeam ? 'selected' : ''}>${t}</option>`).join('');
+            
+            modal.innerHTML = `
+                <div style="background: white; padding: 20px; border-radius: 8px; width: 400px; max-width: 90%;">
+                    <h3 style="margin-top:0">编辑执行人</h3>
+                    <div style="margin-bottom:15px">
+                        <label style="display:block;margin-bottom:5px;font-weight:bold">执行人名称</label>
+                        <input type="text" id="editExecutorNameInput" value="${oldExecutorName}" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px">
+                    </div>
+                    <div style="margin-bottom:15px">
+                        <label style="display:block;margin-bottom:5px;font-weight:bold">所属团队</label>
+                        <select id="editExecutorTeamSelect" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:4px">
+                            <option value="">无</option>
+                            ${teamOptions}
+                        </select>
+                    </div>
+                    <div style="display:flex;gap:10px;justify-content:flex-end">
+                        <button id="editExecutorCancelBtn" style="padding:8px 16px;background:#95a5a6;color:white;border:none;border-radius:4px;cursor:pointer">取消</button>
+                        <button id="editExecutorSaveBtn" style="padding:8px 16px;background:#3498db;color:white;border:none;border-radius:4px;cursor:pointer">保存</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            document.getElementById('editExecutorCancelBtn').onclick = () => modal.remove();
+            document.getElementById('editExecutorSaveBtn').onclick = () => {
+                const newExecutorName = document.getElementById('editExecutorNameInput').value.trim();
+                const newTeam = document.getElementById('editExecutorTeamSelect').value;
+                
+                if (!newExecutorName) {
+                    alert('请输入执行人名称');
                     return;
                 }
                 
-                // 更新执行人列表
-                const index = executorList.indexOf(oldExecutorName);
-                if (index !== -1) {
-                    executorList[index] = newExecutorName;
+                if (newExecutorName && newExecutorName !== oldExecutorName) {
+                    if (executorList.includes(newExecutorName)) {
+                        alert('执行人已存在');
+                        return;
+                    }
+                    
+                    const index = executorList.indexOf(oldExecutorName);
+                    if (index !== -1) {
+                        executorList[index] = newExecutorName;
+                    }
+                    
+                    executors.forEach(executor => {
+                        if (executor.executor === oldExecutorName) {
+                            executor.executor = newExecutorName;
+                        }
+                    });
+                    
+                    const gIdx = ganttExecutorOrder.indexOf(oldExecutorName);
+                    if (gIdx !== -1) {
+                        ganttExecutorOrder[gIdx] = newExecutorName;
+                    }
                 }
                 
-                // 更新执行人和任务中的执行人名称
-                executors.forEach(executor => {
-                    if (executor.executor === oldExecutorName) {
-                        executor.executor = newExecutorName;
-                    }
-                });
+                const targetExecutor = executors.find(e => e.executor === (newExecutorName || oldExecutorName));
+                if (targetExecutor) {
+                    targetExecutor.team = newTeam;
+                } else if (!targetExecutor && (newExecutorName || oldExecutorName)) {
+                    executors.push({
+                        executor: newExecutorName || oldExecutorName,
+                        tasks: [],
+                        team: newTeam
+                    });
+                }
                 
-                // 保存数据
                 saveData();
-                // 更新界面
                 renderExecutorList();
+                renderTeamList();
                 updateExecutorSelects();
                 generateGantt();
-            }
+                modal.remove();
+            };
         }
         
         // 获取多选框当前选中的值
@@ -3268,7 +3537,6 @@
         
         // 更新执行人下拉选择框
         function updateExecutorSelects() {
-            // 更新添加任务表单的执行人选择
             const executorSelect = document.getElementById('executor');
             if (executorSelect) {
                 const selectedValue = executorSelect.value;
@@ -3284,8 +3552,8 @@
                 });
             }
             
-            // 更新筛选表单的执行人选择（新的下拉多选组件）
             renderMultiSelect('multiSelectExecutor', executorList, filterConditions.executors || []);
+            renderMultiSelect('multiSelectTeam', teamList, filterConditions.teams || []);
         }
         
         // 确保所有项目都有颜色配置
@@ -3452,6 +3720,17 @@
                 executorNameSpan.style.cursor = 'grab';
                 executorNameSpan.style.userSelect = 'none';
                 executorCell.appendChild(executorNameSpan);
+                
+                if (executor.team) {
+                    const teamSpan = document.createElement('span');
+                    teamSpan.textContent = executor.team;
+                    teamSpan.style.display = 'block';
+                    teamSpan.style.fontSize = '11px';
+                    teamSpan.style.color = '#666';
+                    teamSpan.style.textAlign = 'center';
+                    teamSpan.style.marginBottom = '3px';
+                    executorCell.appendChild(teamSpan);
+                }
                 
                 // 管理任务按钮
                 const addTaskBtn = document.createElement('button');
@@ -5665,8 +5944,7 @@
                     const orderChanged = newExecutors.some((ex, i) => ex.executor !== executors[i]?.executor);
                     if (orderChanged) {
                         executors = newExecutors;
-                        // 更新 executorList 以保持顺序一致
-                        executorList = newExecutors.map(ex => ex.executor);
+                        ganttExecutorOrder = newExecutors.map(ex => ex.executor);
                         saveData();
                         updateExecutorSelects();
                         generateGantt();
@@ -5702,24 +5980,11 @@
             });
             bindVerticalListDragReorder('executorItems', {
                 onReorder: function(container) {
-                    // 更新executorList
                     executorList = Array.from(container.children).map(function(n) {
                         return n.dataset.executor;
                     }).filter(Boolean);
-                    
-                    // 更新executors数组的顺序
-                    const newExecutors = [];
-                    executorList.forEach(executorName => {
-                        const existingExecutor = executors.find(e => e.executor === executorName);
-                        if (existingExecutor) {
-                            newExecutors.push(existingExecutor);
-                        }
-                    });
-                    executors = newExecutors;
-                    
                     saveData();
                     updateExecutorSelects();
-                    generateGantt();
                 }
             });
             
@@ -6416,6 +6681,8 @@
             updateExecutorFilter();
             updateTaskList();
             ensureProjectColors();
+            renderTeamList();
+            renderExecutorList();
 
             document.getElementById('saturdayWorkday').checked = !!saturdayWorkday;
             document.getElementById('sundayWorkday').checked = !!sundayWorkday;
