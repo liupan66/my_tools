@@ -289,6 +289,271 @@
             overflow: hidden;
             min-height: 0;
         }
+
+        .rich-text-panel {
+            width: 280px;
+            background-color: #f8f9fa;
+            border-left: 1px solid #e9ecef;
+            overflow: hidden;
+            position: relative;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .rich-text-panel.collapsed {
+            width: 60px;
+        }
+
+        .rich-text-panel .toggle-panel-btn {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 24px;
+            height: 48px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .rich-text-panel .toggle-panel-btn:hover {
+            background-color: #2980b9;
+            transform: translateX(3px) scale(1.05);
+        }
+
+        .rich-text-panel .panel-content {
+            opacity: 1;
+            transform: translateX(0);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 16px;
+        }
+
+        .rich-text-panel.collapsed .panel-content {
+            opacity: 0;
+            transform: translateX(20px);
+            pointer-events: none;
+        }
+
+        .rich-text-panel.collapsed .toggle-panel-btn {
+            left: 0;
+        }
+
+        .rich-text-editor-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fff;
+            min-height: 0;
+        }
+
+        .rich-text-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+            padding: 8px 10px;
+            background: #fafafa;
+            border-bottom: 1px solid #e9ecef;
+            flex-shrink: 0;
+        }
+
+        .rich-text-toolbar .toolbar-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: transparent;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #495057;
+            font-size: 14px;
+            transition: all 0.15s ease;
+        }
+
+        .rich-text-toolbar .toolbar-btn:hover {
+            background: #e9ecef;
+            color: #3498db;
+        }
+
+        .rich-text-toolbar .toolbar-btn.active {
+            background: #3498db;
+            color: #fff;
+        }
+
+        .rich-text-toolbar .toolbar-divider {
+            width: 1px;
+            height: 24px;
+            background: #e0e0e0;
+            margin: 4px 4px;
+            align-self: center;
+        }
+
+        .rich-text-toolbar .toolbar-select {
+            height: 32px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 0 8px;
+            font-size: 12px;
+            color: #495057;
+            background: #fff;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .rich-text-toolbar .toolbar-select:hover {
+            border-color: #3498db;
+        }
+
+        .rich-text-content {
+            flex: 1;
+            padding: 16px 20px;
+            overflow-y: auto;
+            outline: none;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #333;
+            min-height: 0;
+        }
+
+        .rich-text-content:empty::before {
+            content: '在此输入内容...';
+            color: #adb5bd;
+            pointer-events: none;
+        }
+
+        .rich-text-content h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 16px 0 8px;
+            color: #1a1a1a;
+            line-height: 1.4;
+        }
+
+        .rich-text-content h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 14px 0 6px;
+            color: #1a1a1a;
+            line-height: 1.4;
+        }
+
+        .rich-text-content h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 12px 0 4px;
+            color: #1a1a1a;
+            line-height: 1.4;
+        }
+
+        .rich-text-content p {
+            margin: 4px 0;
+        }
+
+        .rich-text-content ul, .rich-text-content ol {
+            padding-left: 24px;
+            margin: 4px 0;
+        }
+
+        .rich-text-content blockquote {
+            border-left: 3px solid #3498db;
+            padding: 4px 12px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            color: #495057;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .rich-text-content code {
+            background: #f1f3f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 13px;
+            color: #e83e8c;
+        }
+
+        .rich-text-content pre {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 12px;
+            margin: 8px 0;
+            overflow-x: auto;
+        }
+
+        .rich-text-content pre code {
+            background: transparent;
+            padding: 0;
+            color: #333;
+        }
+
+        .rich-text-content a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .rich-text-content a:hover {
+            text-decoration: underline;
+        }
+
+        .rich-text-content hr {
+            border: none;
+            border-top: 1px solid #e9ecef;
+            margin: 12px 0;
+        }
+
+        .rich-text-content table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 8px 0;
+        }
+
+        .rich-text-content table td, .rich-text-content table th {
+            border: 1px solid #e0e0e0;
+            padding: 6px 10px;
+            text-align: left;
+        }
+
+        .rich-text-content table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+
+        .rich-text-save-status {
+            font-size: 11px;
+            color: #adb5bd;
+            padding: 6px 10px;
+            text-align: right;
+            flex-shrink: 0;
+            border-top: 1px solid #f1f3f5;
+        }
+
+        .rich-text-save-status.saving {
+            color: #f39c12;
+        }
+
+        .rich-text-save-status.saved {
+            color: #27ae60;
+        }
         
         .fullscreen-btn {
             padding: 8px 16px;
@@ -1272,6 +1537,9 @@
             .left-panel {
                 width: 240px;
             }
+            .rich-text-panel {
+                width: 240px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -1290,6 +1558,10 @@
             }
             
             .left-panel {
+                width: 200px;
+            }
+            
+            .rich-text-panel {
                 width: 200px;
             }
             
@@ -1527,22 +1799,54 @@
                 
                 <div class="right-panel">
                     <div class="gantt-container" style="flex: 1;">
-                        <!-- 甘特图垂直滚动容器 -->
                         <div class="gantt-vertical-scroll">
-                            <!-- 甘特图水平滚动容器 -->
                             <div class="gantt-scroll-container">
                                 <table class="gantt-table" id="ganttTable">
                                     <thead>
                                         <tr id="dateHeader">
                                             <th class="executor">任务执行人</th>
-                                            <!-- 日期会通过JavaScript动态生成 -->
                                         </tr>
                                     </thead>
                                     <tbody id="ganttBody">
-                                        <!-- 任务行会通过JavaScript动态生成 -->
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rich-text-panel" id="richTextPanel">
+                    <button class="toggle-panel-btn" onclick="toggleRichTextPanel()">▶</button>
+                    <div class="panel-content">
+                        <div class="rich-text-editor-wrapper">
+                            <div class="rich-text-toolbar" id="richTextToolbar">
+                                <select class="toolbar-select" onchange="execFormatBlock(this.value); this.value='';" title="段落格式">
+                                    <option value="">段落格式</option>
+                                    <option value="h1">标题1</option>
+                                    <option value="h2">标题2</option>
+                                    <option value="h3">标题3</option>
+                                    <option value="p">正文</option>
+                                    <option value="blockquote">引用</option>
+                                </select>
+                                <div class="toolbar-divider"></div>
+                                <button class="toolbar-btn" onclick="execCmd('bold')" title="加粗"><b>B</b></button>
+                                <button class="toolbar-btn" onclick="execCmd('italic')" title="斜体"><i>I</i></button>
+                                <button class="toolbar-btn" onclick="execCmd('underline')" title="下划线"><u>U</u></button>
+                                <button class="toolbar-btn" onclick="execCmd('strikeThrough')" title="删除线"><s>S</s></button>
+                                <div class="toolbar-divider"></div>
+                                <button class="toolbar-btn" onclick="execCmd('insertUnorderedList')" title="无序列表">&#8226;</button>
+                                <button class="toolbar-btn" onclick="execCmd('insertOrderedList')" title="有序列表">1.</button>
+                                <div class="toolbar-divider"></div>
+                                <button class="toolbar-btn" onclick="execCmd('justifyLeft')" title="左对齐">&#8676;</button>
+                                <button class="toolbar-btn" onclick="execCmd('justifyCenter')" title="居中">&#8596;</button>
+                                <button class="toolbar-btn" onclick="execCmd('justifyRight')" title="右对齐">&#8677;</button>
+                                <div class="toolbar-divider"></div>
+                                <button class="toolbar-btn" onclick="insertLink()" title="插入链接">&#128279;</button>
+                                <button class="toolbar-btn" onclick="execCmd('insertHorizontalRule')" title="分割线">&#8213;</button>
+                                <button class="toolbar-btn" onclick="execCmd('removeFormat')" title="清除格式">&#10005;</button>
+                            </div>
+                            <div class="rich-text-content" id="richTextContent" contenteditable="true"></div>
+                            <div class="rich-text-save-status" id="richTextSaveStatus"></div>
                         </div>
                     </div>
                 </div>
@@ -2535,6 +2839,7 @@
 
             init();
             generateTaskTypeLegend();
+            initRichTextEditor();
             
             // 初始化下拉多选组件
             renderMultiSelect('multiSelectTaskType', Object.keys(colorConfig), filterConditions.taskTypes || []);
@@ -6708,6 +7013,200 @@
             } else {
                 toggleBtn.textContent = '◀';
             }
+        }
+        
+        function toggleRichTextPanel() {
+            const panel = document.getElementById('richTextPanel');
+            const toggleBtn = panel.querySelector('.toggle-panel-btn');
+            
+            panel.classList.toggle('collapsed');
+            
+            if (panel.classList.contains('collapsed')) {
+                toggleBtn.textContent = '◀';
+            } else {
+                toggleBtn.textContent = '▶';
+            }
+        }
+        
+        let richTextContent = '';
+        let richTextSaveTimer = null;
+        
+        function execCmd(command, value) {
+            if (!hasEditPermission()) return;
+            document.getElementById('richTextContent').focus();
+            document.execCommand(command, false, value || null);
+        }
+        
+        function execFormatBlock(tag) {
+            if (!tag) return;
+            if (!hasEditPermission()) return;
+            document.getElementById('richTextContent').focus();
+            document.execCommand('formatBlock', false, '<' + tag + '>');
+        }
+        
+        function insertLink() {
+            if (!hasEditPermission()) return;
+            const url = window.prompt ? null : null;
+            const selection = window.getSelection();
+            const selectedText = selection.toString();
+            
+            const existingModal = document.getElementById('linkInsertModal');
+            if (existingModal) existingModal.remove();
+            
+            const modal = document.createElement('div');
+            modal.id = 'linkInsertModal';
+            modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:10000;display:flex;align-items:center;justify-content:center;';
+            
+            const dialog = document.createElement('div');
+            dialog.style.cssText = 'background:#fff;border-radius:10px;padding:24px;width:360px;box-shadow:0 8px 32px rgba(0,0,0,0.15);';
+            dialog.innerHTML = '<div style="font-size:16px;font-weight:600;margin-bottom:16px;color:#2c3e50;">插入链接</div>' +
+                '<div style="margin-bottom:12px;"><label style="display:block;font-size:13px;color:#666;margin-bottom:4px;">链接文本</label>' +
+                '<input id="linkTextInput" type="text" value="' + (selectedText || '') + '" style="width:100%;padding:8px 12px;border:1px solid #e0e0e0;border-radius:6px;font-size:14px;outline:none;" /></div>' +
+                '<div style="margin-bottom:16px;"><label style="display:block;font-size:13px;color:#666;margin-bottom:4px;">链接地址</label>' +
+                '<input id="linkUrlInput" type="url" placeholder="https://" style="width:100%;padding:8px 12px;border:1px solid #e0e0e0;border-radius:6px;font-size:14px;outline:none;" /></div>' +
+                '<div style="display:flex;gap:8px;justify-content:flex-end;">' +
+                '<button id="linkCancelBtn" style="padding:8px 16px;border:1px solid #e0e0e0;border-radius:6px;background:#fff;cursor:pointer;font-size:14px;">取消</button>' +
+                '<button id="linkConfirmBtn" style="padding:8px 16px;border:none;border-radius:6px;background:#3498db;color:#fff;cursor:pointer;font-size:14px;">确定</button></div>';
+            
+            modal.appendChild(dialog);
+            document.body.appendChild(modal);
+            
+            const savedRange = selection.rangeCount > 0 ? selection.getRangeAt(0).cloneRange() : null;
+            
+            document.getElementById('linkCancelBtn').onclick = function() { modal.remove(); };
+            modal.onclick = function(e) { if (e.target === modal) modal.remove(); };
+            
+            document.getElementById('linkConfirmBtn').onclick = function() {
+                const text = document.getElementById('linkTextInput').value;
+                const url = document.getElementById('linkUrlInput').value;
+                if (url) {
+                    const editor = document.getElementById('richTextContent');
+                    editor.focus();
+                    if (savedRange) {
+                        selection.removeAllRanges();
+                        selection.addRange(savedRange);
+                    }
+                    if (text && text !== selectedText) {
+                        document.execCommand('insertHTML', false, '<a href="' + url + '" target="_blank">' + text + '</a>');
+                    } else {
+                        document.execCommand('createLink', false, url);
+                    }
+                    scheduleRichTextSave();
+                }
+                modal.remove();
+            };
+            
+            setTimeout(function() { document.getElementById('linkUrlInput').focus(); }, 100);
+        }
+        
+        function scheduleRichTextSave() {
+            const statusEl = document.getElementById('richTextSaveStatus');
+            if (statusEl) {
+                statusEl.textContent = '编辑中...';
+                statusEl.className = 'rich-text-save-status saving';
+            }
+            
+            if (richTextSaveTimer) clearTimeout(richTextSaveTimer);
+            richTextSaveTimer = setTimeout(function() {
+                saveRichTextContent();
+            }, 1500);
+        }
+        
+        function saveRichTextContent() {
+            const editor = document.getElementById('richTextContent');
+            if (!editor) return;
+            
+            richTextContent = editor.innerHTML;
+            
+            const state = {
+                richTextContent: richTextContent
+            };
+            
+            try {
+                const token = localStorage.getItem('authToken');
+                const headers = { 'Content-Type': 'application/json' };
+                if (token) headers['Authorization'] = 'Bearer ' + token;
+                
+                fetch('/api/rich-text', {
+                    method: 'POST',
+                    headers: headers,
+                    body: JSON.stringify(state)
+                }).then(function(response) {
+                    const statusEl = document.getElementById('richTextSaveStatus');
+                    if (response.ok) {
+                        if (statusEl) {
+                            statusEl.textContent = '已保存';
+                            statusEl.className = 'rich-text-save-status saved';
+                        }
+                        setTimeout(function() {
+                            if (statusEl) {
+                                statusEl.textContent = '';
+                                statusEl.className = 'rich-text-save-status';
+                            }
+                        }, 2000);
+                    } else {
+                        if (statusEl) {
+                            statusEl.textContent = '保存失败';
+                            statusEl.className = 'rich-text-save-status';
+                        }
+                    }
+                }).catch(function() {
+                    const statusEl = document.getElementById('richTextSaveStatus');
+                    if (statusEl) {
+                        statusEl.textContent = '保存失败';
+                        statusEl.className = 'rich-text-save-status';
+                    }
+                });
+            } catch (e) {
+                console.error('保存富文本失败:', e);
+            }
+        }
+        
+        function loadRichTextContent() {
+            try {
+                const token = localStorage.getItem('authToken');
+                const headers = { 'Content-Type': 'application/json' };
+                if (token) headers['Authorization'] = 'Bearer ' + token;
+                
+                fetch('/api/rich-text', { headers: headers }).then(function(response) {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    return null;
+                }).then(function(result) {
+                    if (result && result.data && result.data.richTextContent) {
+                        richTextContent = result.data.richTextContent;
+                        const editor = document.getElementById('richTextContent');
+                        if (editor) {
+                            editor.innerHTML = richTextContent;
+                        }
+                    }
+                }).catch(function(e) {
+                    console.error('加载富文本失败:', e);
+                });
+            } catch (e) {
+                console.error('加载富文本失败:', e);
+            }
+        }
+        
+        function initRichTextEditor() {
+            const editor = document.getElementById('richTextContent');
+            if (!editor) return;
+            
+            if (!hasEditPermission()) {
+                editor.contentEditable = 'false';
+                const toolbar = document.getElementById('richTextToolbar');
+                if (toolbar) {
+                    toolbar.style.opacity = '0.5';
+                    toolbar.style.pointerEvents = 'none';
+                }
+            }
+            
+            editor.addEventListener('input', function() {
+                scheduleRichTextSave();
+            });
+            
+            loadRichTextContent();
         }
         
         // 显示添加任务表单

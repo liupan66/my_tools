@@ -48,6 +48,7 @@ app.use('/api', projectRoutes);
 app.use('/api', healthRoutes);
 
 const ganttDataPath = path.join(__dirname, config.data.ganttDataPath);
+const richTextDataPath = path.join(__dirname, 'data', 'rich-text-data.json');
 
 const authMiddleware = require('./middleware/auth');
 
@@ -114,6 +115,73 @@ function writeGanttData(data) {
     return true;
   } catch (error) {
     logger.error('写入数据失败', error);
+    return false;
+  }
+}
+
+app.get('/api/rich-text', authMiddleware, (req, res) => {
+  try {
+    const data = readRichTextData();
+    res.json({
+      success: true,
+      data: data
+    });
+  } catch (error) {
+    logger.error('获取富文本数据失败', error);
+    res.status(500).json({
+      success: false,
+      message: '获取数据失败'
+    });
+  }
+});
+
+app.post('/api/rich-text', authMiddleware, (req, res) => {
+  try {
+    const data = req.body;
+    const success = writeRichTextData(data);
+    if (success) {
+      res.json({
+        success: true,
+        message: '数据保存成功'
+      });
+    } else {
+      res.status(500).json({
+        success: false,
+        message: '保存数据失败'
+      });
+    }
+  } catch (error) {
+    logger.error('保存富文本数据失败', error);
+    res.status(500).json({
+      success: false,
+      message: '保存数据失败'
+    });
+  }
+});
+
+function readRichTextData() {
+  try {
+    if (fs.existsSync(richTextDataPath)) {
+      const data = fs.readFileSync(richTextDataPath, 'utf8');
+      return JSON.parse(data);
+    }
+    return { richTextContent: '' };
+  } catch (error) {
+    logger.error('读取富文本数据失败', error);
+    return { richTextContent: '' };
+  }
+}
+
+function writeRichTextData(data) {
+  try {
+    const dataDir = path.dirname(richTextDataPath);
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+    fs.writeFileSync(richTextDataPath, JSON.stringify(data, null, 2));
+    return true;
+  } catch (error) {
+    logger.error('写入富文本数据失败', error);
     return false;
   }
 }
